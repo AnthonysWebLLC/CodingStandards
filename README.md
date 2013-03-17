@@ -39,6 +39,7 @@ We'd love you're help! See [README-CONTRIBUTORS.md](README-CONTRIBUTORS.md)
 
 # Todo #
 1. Simplify Installation to be as little of steps as possible (even if requires additional scripting)
+ 1. Add pre-hook installation to install script
 1. Integrate all from [CakePHP Coding Standards Google Doc](http://goo.gl/yYtgD) to this repository as needed, perhaps other linked README files, or just links to the documents where that content comes from?
 1. Pick an open source licence and apply
 1. Link to documentation online for the standards
