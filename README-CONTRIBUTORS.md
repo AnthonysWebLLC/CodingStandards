@@ -19,8 +19,21 @@ The to update do the following
 1. git pull
 
 Then you'll have to update your main repository with something like
+
 1. cd ..
 1. git add CodingStandards
-1. git commit -m "Updating CodingStandards submodule to lastest in master"
+1. git commit -m "Updating CodingStandards submodule"
 1. git push
 
+A similar work flow for making contributions
+
+1. Make changes to Coding Standards
+ 1. `cd app/Plugin/CodingStandards`
+ 1. (Make changes)
+ 1. `git commit ...`
+ 1. `git push`
+1. Sync up with your parent project
+ 1. `cd ..`
+ 1. `git add CodingStandards`
+ 1. `git commit -m "Updating CodingStandards submodule"`
+ 1. `git push`
