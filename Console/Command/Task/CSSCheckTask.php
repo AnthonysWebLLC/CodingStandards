@@ -47,7 +47,7 @@ class CSSCheckTask extends StyleCheckTask {
 		try {
 			$url = $this->toURL($path);
 		} catch (Exception $e) {
-			return $e->getMessage();
+			return $e->getMessage() . "\r\n";
 		}
         $response = $HttpSocket->get($validatorURL, "uri=$url&output=text");
         $bodyHTML = $response->body;
@@ -76,7 +76,7 @@ class CSSCheckTask extends StyleCheckTask {
 
     public function toURL($filepath) {
 		if(!Configure::read('CodingStandards.SERVER_NAME')){
-			throw new Exception("CakePHP config variable CodingStandards.SERVER_NAME not set");
+			throw new Exception("CakePHP config variable CodingStandards.SERVER_NAME not set when trying to get url for $filepath");
 		}
         preg_match('/\/css\/.*$/i', $filepath, $fileURL);
         return 'http://' . Configure::read('CodingStandards.SERVER_NAME') . current($fileURL);
