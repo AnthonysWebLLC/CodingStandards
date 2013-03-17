@@ -22,4 +22,4 @@ And you're done,
 * ?CSS - W3C Validation API?
 
 # Contributing
-See [a relative link](README-CONTRIBUTORS.md)
+We'd love you're help! See [README-CONTRIBUTORS.md](README-CONTRIBUTORS.md)

@@ -1,6 +1,12 @@
-# Contributors
-We suggest adding this project as a submodule to your existing project (it doesn't make much sense standalone).  To do this execute this from your repository's root path
+[Jump back to README.md](README.md)
+
+# Community developers
+Fork us and send a request we look at your update to merge into our main repository
+
+# Setting up for development
+Weather a core or community developer we suggest adding a submodule to your existing project as this plugin doesn't make much sense standalone.  To do so execute this from your repository's root path
 1. git submodule add git@github.com:AnthonysWebLLC/CodingStandards.git ./app/Plugin/CodingStandards
+1.1. (Replace git repository URL if you've forked)
 1. git commit -m "Adding CodingStandards Submodule"
 
 Then when you clone either use `git clone --recursive <...>` when copying your repository or run `git submodule update --init` to get all the files
