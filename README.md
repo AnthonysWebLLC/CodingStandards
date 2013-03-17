@@ -34,4 +34,6 @@ We'd love you're help! See [README-CONTRIBUTORS.md](README-CONTRIBUTORS.md)
 1. Integrate all from [CakePHP Coding Standards Google Doc](http://goo.gl/yYtgD) to this README.md as needed.
 1. Pick an open source licence and apply
 1. Proofread, spellcheck, cleanup, etc all instructions here
+1. Make README.md here more concise
+1. Make screencast demonstrating how it works
 1. Promote this project @ CakePHP
