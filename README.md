@@ -27,3 +27,14 @@ We suggest adding this project as a submodule to your existing project (it doesn
 1. git commit -m "Adding CodingStandards Submodule"
 
 Then when you clone either use `git clone --recursive <...>` when copying your repository or run `git submodule update --init` to get all the files
+
+The to update do the following
+1. cd app/Plugin/CodingStandards
+1. git checkout master
+1. git pull
+
+Then you'll have to update your main repository with something like
+1. cd ..
+1. git add CodingStandards
+1. git commit -m "Updating CodingStandards submodule to lastest in master"
+1. git push
