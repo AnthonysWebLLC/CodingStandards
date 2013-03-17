@@ -15,7 +15,7 @@ After installing whenever you a attempt a commit the coding standards plugin wil
 # Why have Coding Standardsor changing ?
 Amoung many, one of the most prevalent reasons for having Coding Standards is to help make code more easily readbale when you have multiple or changing project contributors.
 
-# The standards (Todo: Link to documentation online)
+# The standards
 * PHP - 
 * JavaScript - jQuery's standards
 * ?HTML - W3C Validation / Google Coding Standards?
@@ -33,6 +33,7 @@ We'd love you're help! See [README-CONTRIBUTORS.md](README-CONTRIBUTORS.md)
 # Todo
 1. Integrate all from [CakePHP Coding Standards Google Doc](http://goo.gl/yYtgD) to this README.md as needed.
 1. Pick an open source licence and apply
+1. Link to documentation online for the standards
 1. Proofread, spellcheck, cleanup, etc all instructions here
 1. Make README.md here more concise
 1. Make screencast demonstrating how it works
