@@ -1,8 +1,12 @@
 # About
 A full CakePHP Coding Standards stack centered around pre-commit automated testing
 
-# Installation
+# Installation - Repository
 1. Copy this repository's files to ~/app/Plugin/CodingStandard
+1. Add this to your bootstrap.php: if (Configure::read('debug') > 0) {  CakePlugin::load('CodingStandards', array('bootstrap' => true)); }
+1. Add & commit files
+
+# Installation - Each development server
 1. Console/cake CodingStandards.coding_standards_check install
 1. ln -s -f /home/domains/domains/{sub.domain.tld}/app/Plugin/CodingStandards/Vendor/pre-commit .git/hooks/pre-commit
 1. chmod +x /home/domains/domains/{sub.domain.tld}/app/Plugin/CodingStandards/Vendor/pre-commit
@@ -31,6 +35,7 @@ Amoung many, one of the most prevalent reasons for having Coding Standards is to
 We'd love you're help! See [README-CONTRIBUTORS.md](README-CONTRIBUTORS.md)
 
 # Todo
+1. Simplify Installation to be as little of steps as possible (even if requires additional scripting)
 1. Integrate all from [CakePHP Coding Standards Google Doc](http://goo.gl/yYtgD) to this repository as needed, perhaps other linked README files, or just links to the documents where that content comes from?
 1. Pick an open source licence and apply
 1. Link to documentation online for the standards
