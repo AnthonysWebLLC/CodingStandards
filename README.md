@@ -7,11 +7,11 @@ A full CakePHP Coding Standards stack centered around pre-commit automated testi
 1. ln -s -f /home/domains/domains/{sub.domain.tld}/app/Plugin/CodingStandards/Vendor/pre-commit .git/hooks/pre-commit
 1. chmod +x /home/domains/domains/{sub.domain.tld}/app/Plugin/CodingStandards/Vendor/pre-commit
 
-# Use
-After installing whenever you a attempt a commit the coding standards plugin will automatically check all changed code and present a warning message if anything doesn't follow the standards.  You can skip this check via 
-
 ## Installation Notes
 1. The install script is only tested on Fedora and likely has issues with non-yum based linux flavors
+
+# Use
+After installing whenever you a attempt a commit the coding standards plugin will automatically check all changed code and present a warning message if anything doesn't follow the standards.  You can skip this check via 
 
 # Why have Coding Standardsor changing ?
 Amoung many, one of the most prevalent reasons for having Coding Standards is to help make code more easily readbale when you have multiple or changing project contributors.
