@@ -31,7 +31,7 @@ Amoung many, one of the most prevalent reasons for having Coding Standards is to
 We'd love you're help! See [README-CONTRIBUTORS.md](README-CONTRIBUTORS.md)
 
 # Todo
-1. Integrate all from [CakePHP Coding Standards Google Doc](http://goo.gl/yYtgD) to this README.md as needed.
+1. Integrate all from [CakePHP Coding Standards Google Doc](http://goo.gl/yYtgD) to this repository as needed, perhaps other linked README files, or just links to the documents where that content comes from?
 1. Pick an open source licence and apply
 1. Link to documentation online for the standards
 1. Proofread, spellcheck, cleanup, etc all instructions here
