@@ -19,7 +19,7 @@ A full CakePHP Coding Standards stack centered around pre-commit automated testi
 # Use #
 After installing whenever you a attempt a commit the coding standards plugin will automatically check all changed code and present a warning message if anything doesn't follow the standards.  You can skip this check via `git commit -n`
 
-You can also run a full repository code check via 
+You can also run a full repository coding standards check any time via `Console/cake CodingStandards.coding_standards_check`
 
 # Why have Coding Standardsor changing ? #
 Amoung many, one of the most prevalent reasons for having Coding Standards is to help make code more easily readbale when you have multiple or changing project contributors.
