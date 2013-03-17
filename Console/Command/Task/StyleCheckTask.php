@@ -80,7 +80,8 @@ class StyleCheckTask extends Shell {
 
         $this->Template->createFile($filepath, $HTMLreport);
 
-        $reportURL = Configure::read('CodingStandards.SERVER_NAME') . '/pages/code_style_check_report';
+		$reportURL = (Configure::read('CodingStandards.SERVER_NAME')?Configure::read('CodingStandards.SERVER_NAME'):'');
+		$reportURL .= '/pages/code_style_check_report';
         $this->out(__d('cake_console', "Open $reportURL in web browser to view report."));
     }
 

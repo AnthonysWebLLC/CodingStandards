@@ -1,9 +1,5 @@
 <?php
 /**
- * Server Hostname
- */
-Configure::write('CodingStandards.SERVER_NAME', 'sub.domain.com');
-/**
  * Path to CodingStandards plugin folder
  */
 Configure::write('CodingStandards.PLUGIN_PATH', APP . 'Plugin' . DS . 'CodingStandards');

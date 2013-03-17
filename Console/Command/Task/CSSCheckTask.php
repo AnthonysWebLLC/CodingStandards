@@ -44,7 +44,11 @@ class CSSCheckTask extends StyleCheckTask {
         $HttpSocket = new HttpSocket();
 
         $validatorURL = "http://jigsaw.w3.org/css-validator/validator";
-        $url = $this->toURL($path);
+		try {
+			$url = $this->toURL($path);
+		} catch (Exception $e) {
+			return $e->getMessage();
+		}
         $response = $HttpSocket->get($validatorURL, "uri=$url&output=text");
         $bodyHTML = $response->body;
 
@@ -71,6 +75,9 @@ class CSSCheckTask extends StyleCheckTask {
     }
 
     public function toURL($filepath) {
+		if(!Configure::read('CodingStandards.SERVER_NAME')){
+			throw new Exception("CakePHP config variable CodingStandards.SERVER_NAME not set");
+		}
         preg_match('/\/css\/.*$/i', $filepath, $fileURL);
         return 'http://' . Configure::read('CodingStandards.SERVER_NAME') . current($fileURL);
     }
