@@ -2,6 +2,7 @@
 A full CakePHP Coding Standards stack centered around pre-commit automated testing
 
 # Installation
+1. Copy this repository's files to ~/app/Plugin/CodingStandard
 1. Console/cake CodingStandards.coding_standards_check install
 1. ln -s -f /home/domains/domains/{sub.domain.tld}/app/Plugin/CodingStandards/Vendor/pre-commit .git/hooks/pre-commit
 1. chmod +x /home/domains/domains/{sub.domain.tld}/app/Plugin/CodingStandards/Vendor/pre-commit
@@ -19,3 +20,10 @@ And you're done,
 * JavaScript - JSHint
 * ?HTML - W3C Validation API?
 * ?CSS - W3C Validation API?
+
+# Contributing
+We suggest adding this project as a submodule to your existing project (it doesn't make much sense standalone).  To do this execute this from your repository's root path
+1. git submodule add git@github.com:AnthonysWebLLC/CodingStandards.git ./app/Plugin/CodingStandards
+1. git commit -m "Adding CodingStandards Submodule"
+
+Then when you clone either use `git clone --recursive <...>` when copying your repository or run `git submodule update --init` to get all the files
