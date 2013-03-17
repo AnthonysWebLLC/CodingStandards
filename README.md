@@ -17,7 +17,9 @@ A full CakePHP Coding Standards stack centered around pre-commit automated testi
 [Note: The install script is only tested on Fedora and likely has issues with non-yum based linux flavors]
 
 # Use #
-After installing whenever you a attempt a commit the coding standards plugin will automatically check all changed code and present a warning message if anything doesn't follow the standards.  You can skip this check via 
+After installing whenever you a attempt a commit the coding standards plugin will automatically check all changed code and present a warning message if anything doesn't follow the standards.  You can skip this check via `git commit -n`
+
+You can also run a full repository code check via 
 
 # Why have Coding Standardsor changing ? #
 Amoung many, one of the most prevalent reasons for having Coding Standards is to help make code more easily readbale when you have multiple or changing project contributors.
@@ -40,6 +42,8 @@ We'd love you're help! See [README-CONTRIBUTORS.md](README-CONTRIBUTORS.md)
 # Todo #
 1. Simplify Installation to be as little of steps as possible (even if requires additional scripting)
  1. Add pre-hook installation to install script (and by doing this remove proprietary domains install folder)
+ 2. 
+1. Integrate all from original [Introducing coding standards procedure](http://goo.gl/T5xjL) on Basecamp
 1. Integrate all from [CakePHP Coding Standards Google Doc](http://goo.gl/yYtgD) to this repository as needed, perhaps other linked README files, or just links to the documents where that content comes from?
 1. Pick an open source licence and apply
 1. Link to documentation online for the standards
