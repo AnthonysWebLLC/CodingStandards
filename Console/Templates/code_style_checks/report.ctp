@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>SweatLedger Coding Style Check report</title>
+    <title>Coding Style Check report</title>
 
     <link rel="stylesheet" type="text/css" href="/css/framework.css" />
     <link rel="stylesheet" type="text/css" href="/css/style.css" />
@@ -13,7 +13,7 @@
 <body>
     <div id="container">
         <div id="header">
-            <h1>SweatLedger Coding Style Check report</h1>
+            <h1>Coding Style Check report</h1>
             <h2>Date: <?=$reportDateTime?></h2>
         </div>
         <div id="content">
