@@ -45,11 +45,19 @@ class CSSCheckTask extends StyleCheckTask {
 
         $validatorURL = "http://jigsaw.w3.org/css-validator/validator";
 		try {
-			$url = $this->toURL($path);
+			$cssFileURL = $this->toURL($path);
 		} catch (Exception $e) {
 			return $e->getMessage() . "\r\n";
 		}
-        $response = $HttpSocket->get($validatorURL, "uri=$url&output=text");
+
+        $cssValidatorOptions = array(
+            'uri' => $cssFileURL,
+            'output' => 'text',
+            'vextwarning' => 'true', // report vendor extensions as warnings, not errors
+            'warning' => 'no' // return only validation errors, not warnings
+        );
+
+        $response = $HttpSocket->get($validatorURL, http_build_query($cssValidatorOptions));
         $bodyHTML = $response->body;
 
         if ($summary) {
