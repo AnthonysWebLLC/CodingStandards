@@ -42,6 +42,8 @@ We'd love you're help! See [README-CONTRIBUTORS.md](README-CONTRIBUTORS.md)
 # Todo #
 1. Move all of this list to somewhere for better organization
  1. Github issue tracker? (Whatever we use we want open to public, nice if stays in GitHub)
+1. Add `su` to installation steps required such a pear
+ 1. See email titled "Coding Standards missing CakePHP" between Mirko & Anthony starting March 19th
 1. Simplify Installation to be as little of steps as possible (even if requires additional scripting)
  1. See comments RE:Simplify bootstrap.php @ https://anthonysweb.beanstalkapp.com/cakephp2-template/changesets/f8221749f30b0e3fb47aeb3137541a50c1446351#comment-90505
  1. Add pre-hook installation to install script (and by doing this remove proprietary domains install folder)
