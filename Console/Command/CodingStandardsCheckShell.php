@@ -96,6 +96,13 @@ class CodingStandardsCheckShell extends AppShell {
 	}
 
 	public function install() {
+		$this->out('Installing PHP-Pear');
+		$result = $this->_execCommand("yum install php-pear -y");
+		if (!$result) {
+			$this->out('Aborting install due to errors');
+			exit;
+		}
+
 		$this->out('Installing PHP_CodeSniffer');
 		$result = $this->_execCommand("pear install PHP_CodeSniffer");
 		if (!$result) {
