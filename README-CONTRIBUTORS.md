@@ -13,6 +13,9 @@ Weather a core or community developer we suggest adding a submodule to your exis
 
 Then when you clone either use `git clone --recursive <...>` when copying your repository or run `git submodule update --init` to get all the files
 
+# Requirements #
+Pear - run something like `yum install php-pear`
+
 ## Updating your copy ##
 1. Update CodingStandards Submodule
  1. cd app/Plugin/CodingStandards
