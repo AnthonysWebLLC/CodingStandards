@@ -60,6 +60,7 @@ We'd love you're help! See [README-CONTRIBUTORS.md](README-CONTRIBUTORS.md)
  1. Also document how exclusion file patterns work (I think we have them for vendors folder).  Perhaps in a new DOCUMENTATION.md
  1. Also allow wildcards?
  1. Add a few defaults like WEBROOT/js/vendors and WEBROOT/css/vendors (or is if /js/Vendors?)
+ 1. Also a forced inclusions list probably (We sometimes want to check vendor code too -- can we make a pre-commit on a submodule work or.... perhaps could make CS work as submodule of submodule?  Hrmmm feels tricky)
 1. Link to documentation online for the standards
 1. Proofread, spellcheck, cleanup, etc all instructions here
 1. Make README.md here more concise
