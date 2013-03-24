@@ -7,10 +7,10 @@ A full CakePHP Coding Standards stack centered around pre-commit automated testi
 1. Add & commit files
 
 # Installation - Each development server #
-1. git submodule update
-1. Console/cake CodingStandards.coding_standards_check install
-1. ln -s -f /home/domains/domains/{sub.domain.tld}/app/Plugin/CodingStandards/Vendor/pre-commit .git/hooks/pre-commit
-1. chmod +x /home/domains/domains/{sub.domain.tld}/app/Plugin/CodingStandards/Vendor/pre-commit
+1. `git submodule update`
+1. `Console/cake CodingStandards.coding_standards_check install`
+1. `ln -s -f /home/domains/domains/{sub.domain.tld}/app/Plugin/CodingStandards/Vendor/pre-commit .git/hooks/pre-commit`
+1. `chmod +x /home/domains/domains/{sub.domain.tld}/app/Plugin/CodingStandards/Vendor/pre-commit`
 1. Optional: Add Configure::write('CodingStandards.SERVER_NAME', '<Insert Accessible URL HERE>')
  1. This will give you a full url where errors are output
  1. Will enable CSS style checking (We need to switch the API to uploads to make this not required)
