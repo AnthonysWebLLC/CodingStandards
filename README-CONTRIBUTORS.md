@@ -14,15 +14,17 @@ Weather a core or community developer we suggest adding a submodule to your exis
 Then when you clone either use `git clone --recursive <...>` when copying your repository or run `git submodule update --init` to get all the files
 
 ## Updating your copy ##
+1. Initial setup on your machine
+ 1. `git submodule update`
 1. Update CodingStandards Submodule
- 1. cd app/Plugin/CodingStandards
- 1. git checkout master
- 1. git pull
+ 1. `cd app/Plugin/CodingStandards`
+ 1. `git checkout master`
+ 1. `git pull`
 1. Update parent project's link to submodule
- 1. cd ..
- 1. git add CodingStandards
- 1. git commit -m "Updating CodingStandards submodule"
- 1. git push
+ 1. `cd ..`
+ 1. `git add CodingStandards`
+ 1. `git commit -m "Updating CodingStandards submodule"`
+ 1. `git push`
 
 ## Makeing edits ##
 
