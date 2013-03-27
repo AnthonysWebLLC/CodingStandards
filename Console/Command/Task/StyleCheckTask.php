@@ -17,7 +17,7 @@ class StyleCheckTask extends Shell {
 
 	protected $exts = array();
 
-    public function getAllFiles() {
+    protected function getAllFiles() {
 		if(empty($this->exts)){
 			$this->err(__d('cake_console', "No exts set for " . __CLASS__));
 			$this->_stop();
