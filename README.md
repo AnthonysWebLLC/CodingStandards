@@ -68,3 +68,4 @@ We'd love you're help! See [README-CONTRIBUTORS.md](README-CONTRIBUTORS.md)
 1. Make README.md here more concise
 1. Make screencast demonstrating how it works
 1. Promote this project @ CakePHP
+1. Add HTML validation (via w3c API / file upload method with full action rendering? Would probably need configuration in project to do this, unless can figure out a way to do it right on .ctp files non-rendered)
