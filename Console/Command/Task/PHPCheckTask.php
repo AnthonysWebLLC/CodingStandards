@@ -31,7 +31,7 @@ class PHPCheckTask extends StyleCheckTask {
 
         $this->_files = $this->getAllFiles('.*\.php|.*\.ctp');
 		if(empty($this->_files)){
-			$this->out("No JavaScript files found");
+			$this->out("No PHP files found");
 			return;
 		}
 

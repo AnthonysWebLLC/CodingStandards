@@ -15,7 +15,7 @@ class CSSCheckTask extends StyleCheckTask {
 
         $this->_files = $this->getAllFiles('.*\.css');
 		if(empty($this->_files)){
-			$this->out("No JavaScript files found");
+			$this->out("No CSS files found");
 			return;
 		}
 
