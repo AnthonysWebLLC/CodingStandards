@@ -106,7 +106,7 @@ class StyleCheckTask extends Shell {
 			if(strlen($result)) {
 				$result = "File formatting errors:\r\n$result";
 			} else {
-				$result = "[No file formatting errors found]\r\n";
+				$result = "[Base file formatting checks passed]\r\n";
 			}
             return $result;
         }
