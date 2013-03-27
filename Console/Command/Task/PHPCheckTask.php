@@ -2,6 +2,7 @@
 App::uses('StyleCheckTask', 'CodingStandards.Console/Command/Task');
 
 class PHPCheckTask extends StyleCheckTask {
+	protected $exts = array('php', 'ctp');
 
     public function execute($classToValidate = false) {
         switch ($classToValidate) {
@@ -22,34 +23,6 @@ class PHPCheckTask extends StyleCheckTask {
                 exit(0);
                 break;
         }
-    }
-
-    protected function _interactive() {
-        $this->hr();
-        $this->out(__d('cake_console', "Validate Class\nPath: %s", $this->path));
-        $this->hr();
-
-        $this->_files = $this->getAllFiles('.*\.php|.*\.ctp');
-		if(empty($this->_files)){
-			$this->out("No PHP files found");
-			return;
-		}
-
-        $options = array_merge($this->_files, array('All files'));
-
-        $option = $this->inOptions($options, 'Choose which file you want to validate:');
-
-        $filename = $options[$option];
-
-        if ($filename == 'All files') {
-            $path = $this->path;
-        } else {
-            $path = $filename;
-        }
-
-        $output = $this->run($path);
-
-        $this->out($output);
     }
 
     public function run($path, $summary = false) {

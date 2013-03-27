@@ -2,45 +2,11 @@
 App::uses('StyleCheckTask', 'CodingStandards.Console/Command/Task');
 
 class CSSCheckTask extends StyleCheckTask {
+	protected $exts = array('css');
 
     public function execute() {
         $this->path = Configure::read('CodingStandards.CSS_PATH');
         $this->_interactive();
-    }
-
-    protected function _interactive() {
-        $this->hr();
-        $this->out(__d('cake_console', "Validate file\nPath: %s", $this->path));
-        $this->hr();
-
-        $this->_files = $this->getAllFiles('.*\.css');
-		if(empty($this->_files)){
-			$this->out("No CSS files found");
-			return;
-		}
-
-        $options = array_merge($this->_files, array('All files'));
-
-        $option = $this->inOptions($options, 'Choose which file you want to validate:');
-
-        $filename = $options[$option];
-
-        $filesToValidate = array();
-        if ($filename == 'All files') {
-            foreach ($this->_files as $filepath) {
-                $filesToValidate[] = $filepath;
-            }
-        } else {
-            $filesToValidate[] = $filename;
-        }
-
-        $output = '';
-
-        foreach ($filesToValidate as $url) {
-            $output .= $this->run($url);
-        }
-
-        $this->out($output);
     }
 
     public function run($path, $summary = false) {

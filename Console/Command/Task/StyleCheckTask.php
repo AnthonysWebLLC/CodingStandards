@@ -15,7 +15,14 @@ class StyleCheckTask extends Shell {
 
     protected $files = array();
 
-    public function getAllFiles($regex) {
+	protected $exts = array();
+
+    public function getAllFiles() {
+		if(empty($this->exts)){
+			$this->err(__d('cake_console', "No exts set for " . __CLASS__));
+			$this->_stop();
+		}
+		$regex = '.*\.' . implode('|.*\.', $this->exts);
         $folder = new Folder($this->path);
         $files = $folder->findRecursive($regex, true);
         return $files;
@@ -58,7 +65,7 @@ class StyleCheckTask extends Shell {
         $javascriptOutput = $this->JSCheck->run("$javascriptPath/*");
 
         $this->path = Configure::read('CodingStandards.CSS_PATH');
-        $this->_files = $this->getAllFiles('.*\.css');
+        $this->_files = $this->CSSCheck->getAllFiles();
         $cssOutput = '';
         foreach ($this->_files as $filepath) {
             $cssOutput .= $this->CSSCheck->run($filepath);
@@ -103,5 +110,40 @@ class StyleCheckTask extends Shell {
 			}
             return $result;
         }
+    }
+
+	protected function _interactive() {
+        $this->hr();
+        $this->out(__d('cake_console', "Validate file\nPath: %s", $this->path));
+        $this->hr();
+
+        $this->_files = $this->getAllFiles();
+		if(empty($this->_files)){
+			$this->out("No ".implode(',', $this->exts)." files found");
+			return;
+		}
+
+        $options = array_merge($this->_files, array('All files'));
+
+        $option = $this->inOptions($options, 'Choose which file you want to validate:');
+
+        $filename = $options[$option];
+
+        $filesToValidate = array();
+        if ($filename == 'All files') {
+            foreach ($this->_files as $filepath) {
+                $filesToValidate[] = $filepath;
+            }
+        } else {
+            $filesToValidate[] = $filename;
+        }
+
+        $output = '';
+
+        foreach ($filesToValidate as $url) {
+            $output .= $this->run($url);
+        }
+
+        $this->out($output);
     }
 }
