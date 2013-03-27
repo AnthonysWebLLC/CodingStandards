@@ -14,6 +14,10 @@ class CSSCheckTask extends StyleCheckTask {
         $this->hr();
 
         $this->_files = $this->getAllFiles('.*\.css');
+		if(empty($this->_files)){
+			$this->out("No JavaScript files found");
+			return;
+		}
 
         $options = array_merge($this->_files, array('All files'));
 

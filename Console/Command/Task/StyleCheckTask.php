@@ -16,15 +16,8 @@ class StyleCheckTask extends Shell {
     protected $files = array();
 
     public function getAllFiles($regex) {
-        $dir = new Folder($this->path);
-
-        $files = $dir->findRecursive($regex, true);
-
-        if (empty($files)) {
-            $this->err(__d('cake_console', "Path $this->path does not have any files."));
-            $this->_stop();
-        }
-
+        $folder = new Folder($this->path);
+        $files = $folder->findRecursive($regex, true);
         return $files;
     }
 
