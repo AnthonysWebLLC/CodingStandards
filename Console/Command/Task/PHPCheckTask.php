@@ -57,7 +57,12 @@ class PHPCheckTask extends StyleCheckTask {
         } else {
             exec("phpcs --warning-severity=0 --extensions=ctp,php --standard=CakePHP $path", $result);
             $output = implode("\r\n", $result);
-            return "$parentOutput\r\nPHP formatting errors:\r\n$output\r\n";
+			if(strlen($output)){
+				$return = "$parentOutput\r\nPHP formatting errors:\r\n$output\r\n";
+			} else {
+				$return = "$parentOutput\r\n[No PHP formatting errors found]";
+			}
+			return $return;
         }
 
     }
