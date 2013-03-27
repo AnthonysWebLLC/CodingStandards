@@ -40,7 +40,7 @@ Amoung many, one of the most prevalent reasons for having Coding Standards is to
 # Contributing #
 We'd love you're help! See [README-CONTRIBUTORS.md](README-CONTRIBUTORS.md)
 
-# Todo #
+# Todo / Ideas #
 1. Move all of this list to somewhere for better organization
  1. Github issue tracker? (Whatever we use we want open to public, nice if stays in GitHub)
 1. Add `su` to installation steps required such a pear
@@ -62,6 +62,7 @@ We'd love you're help! See [README-CONTRIBUTORS.md](README-CONTRIBUTORS.md)
  1. Also allow wildcards?
  1. Add a few defaults like WEBROOT/js/vendors and WEBROOT/css/vendors (or is if /js/Vendors?)
  1. Also a forced inclusions list probably (We sometimes want to check vendor code too -- can we make a pre-commit on a submodule work or.... perhaps could make CS work as submodule of submodule?  Hrmmm feels tricky)
+1. Make Coding Standards check its self (probably best done via a config variable for custom pathS settings)"
 1. Link to documentation online for the standards
 1. Proofread, spellcheck, cleanup, etc all instructions here
 1. Make README.md here more concise
