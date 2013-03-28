@@ -67,13 +67,14 @@ class PHPCheckTask extends StyleCheckTask {
 		if($removed_count){
 			// Fix top error summary
 			preg_match('/^FOUND ([0-9]+) ERROR\\(S\\) AFFECTING ([0-9]+) LINE\\(S\\)$/', $result_lines[3], $matches);
-			$errors = $matches[1] - 1;
-			$lines = $matches[2] - 1;
+			$errors = $matches[1] - $removed_count;
+			$lines = $matches[2] - $removed_count;
 
 			// No errors so return empty output as it would have otherwise
 			if(0 === $errors){
 				return array();
 			}
+			$result_lines[3] = sprintf('FOUND %s ERROR(S) AFFECTING %s LINE(S)', $errors, $lines);
 		}
 
 		return $result_lines;
