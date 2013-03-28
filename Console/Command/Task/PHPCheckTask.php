@@ -11,8 +11,10 @@ class PHPCheckTask extends StyleCheckTask {
     public function run($path, $summary = false) {
         $parentOutput = parent::run($path, $summary);
 
+		$start = microtime(true);
         exec("phpcs --warning-severity=0 --extensions=ctp,php --standard=CakePHP $path", $result);
 		$result = $this->_strip_legacy_camel_case_errors($result);
+		$secondsRan = microtime(true) - $start;
         if ($summary) {
             return empty($result) && $parentOutput;
         } else {
@@ -20,7 +22,7 @@ class PHPCheckTask extends StyleCheckTask {
 			if(strlen($output)){
 				$return = "$parentOutput\r\nPHP Coding Standards errors:\r\n$output\r\n";
 			} else {
-				$return = "$parentOutput [PHP Coding Standards checks passed] \r\n";
+				$return = "$parentOutput [PHP Coding Standards checks passed (".sprintf('%01.2f', $secondsRan)."s)] \r\n";
 			}
 			return $return;
         }

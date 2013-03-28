@@ -61,19 +61,24 @@ class StyleCheckTask extends Shell {
 			'JS',
 			'CSS'
 		);
+		$start = microtime(true);
 		$checkResults = array();
 		foreach($checks AS $check){
 			$output = '';
 			$checkClass = "${check}Check";
+
+			$startCheckGroup = microtime(true);
 			foreach ($this->$checkClass->getAllFiles() as $filepath) {
 				$output .= strip_tags($this->$checkClass->run($filepath));
 			}
-			$checkResults[$check] = $output;
+			$secondsRanCheckGroup = microtime(true) - $startCheckGroup;
+			$checkResults[$check] = array('output'=>$output, 'secondsRan'=>$secondsRanCheckGroup);
 		}
+		$secondsRan = microtime(true) - $start;
 
         $pluginPath = Configure::read('CodingStandards.PLUGIN_PATH');
         $this->Template->templatePaths = array($pluginPath . DS . 'Console' . DS . 'Templates' . DS);
-        $this->Template->set(compact('reportDateTime', 'checkResults'));
+        $this->Template->set(compact('reportDateTime', 'checkResults', 'secondsRan'));
 
         $HTMLreport = $this->Template->generate('code_style_checks', 'report');
         $filepath = current(App::path('View')) . DS . 'Pages' . DS . 'code_style_check_report.ctp';
@@ -101,7 +106,9 @@ class StyleCheckTask extends Shell {
             exec("phpcs --extensions=php,ctp,js --standard=CakePHP --report=summary --sniffs=$sniffs $path", $result);
             return empty($result);
         } else {
+			$start = microtime(true);
             exec("phpcs --warning-severity=0  --extensions=php,ctp,js --standard=CakePHP --sniffs=$sniffs $path", $result);
+			$secondsRan = microtime(true) - $start;
             $result = implode("\r\n", $result);
 			if(strlen($result)) {
 				$result = "File formatting errors:\r\n$result\r\n";
@@ -110,7 +117,7 @@ class StyleCheckTask extends Shell {
 					$path = '...' . substr($path, -37);
 				}
 				$path = sprintf("%40s", $path);
-				$result = "[File: $path] [Base file formatting checks passed]";
+				$result = "[File: $path] [Base file formatting checks passed (".sprintf('%01.2f', $secondsRan)."s)]";
 			}
             return $result;
         }
