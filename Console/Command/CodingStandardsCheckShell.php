@@ -55,6 +55,18 @@ class CodingStandardsCheckShell extends AppShell {
 		$this->main();
 	}
 
+	public function ignore_file_status() {
+		$filepath = $this->args[0];
+		$output = true;
+		foreach(Configure::read('CodingStandards.PATH_IGNORE_PATTERNS') AS $pathIgnorePattern){
+			if(preg_match($pathIgnorePattern, $filepath)){
+				$output = false;
+				break;
+			}
+		}
+		var_export($output);
+	}
+
 	public function check_file() {
 		$filepath = $this->args[0];
 		$option = $this->args[1];

@@ -10,14 +10,18 @@ ERRORS="false"
 
 style_check () {
     FILEPATH=$CURRENT_DIR/$1
-    STATUS=`cd $APP_PATH && Console/cake CodingStandards.coding_standards_check check_file $FILEPATH summary`
+    IGNORE=`cd $APP_PATH && Console/cake CodingStandards.coding_standards_check _ignore_file_status $FILEPATH`
 
-    if [ "$STATUS" == "false" ];
-    then
-        echo "$FILE contains errors!"
-        ERRORS="true"
-        cd $APP_PATH && Console/cake CodingStandards.coding_standards_check check_file $FILEPATH full_report
-    fi
+    if [ "$IGNORE" == "false" ];
+	then
+    	STATUS=`cd $APP_PATH && Console/cake CodingStandards.coding_standards_check check_file $FILEPATH summary`
+	    if [ "$STATUS" == "false" ];
+    	then
+	        echo "$FILE contains errors!"
+        	ERRORS="true"
+    	    cd $APP_PATH && Console/cake CodingStandards.coding_standards_check check_file $FILEPATH full_report
+	    fi
+	fi
 }
 
 
@@ -29,9 +33,14 @@ else
 fi
 
 # list all added and changed files
+CTP_FILES=`git diff --cached --name-status | grep \.ctp$ | awk '$1 != "D" { print $2 }'`
 PHP_FILES=`git diff --cached --name-status | grep \.php$ | awk '$1 != "D" { print $2 }'`
 JS_FILES=`git diff --cached --name-status | grep \.js$ | awk '$1 != "D" { print $2 }'`
 CSS_FILES=`git diff --cached --name-status | grep \.css$ | awk '$1 != "D" { print $2 }'`
+
+for FILE in $CTP_FILES ; do
+    style_check $FILE
+done
 
 for FILE in $PHP_FILES ; do
     style_check $FILE

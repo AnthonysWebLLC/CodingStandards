@@ -22,6 +22,8 @@ After installing whenever you a attempt a commit the coding standards plugin wil
 
 You can also run an interactive coding standards shell any time via `Console/cake CodingStandards.coding_standards_check`
 
+Or you can check an individual file with `Console/cake CodingStandards.coding_standards_check check_file [FILE] [(summary|full_report)]`
+
 # Why have Coding Standardsor changing ? #
 Amoung many, one of the most prevalent reasons for having Coding Standards is to help make code more easily readbale when you have multiple or changing project contributors.
 
