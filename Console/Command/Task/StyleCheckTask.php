@@ -69,7 +69,7 @@ class StyleCheckTask extends Shell {
 
 			$startCheckGroup = microtime(true);
 			$files = $this->$checkClass->getAllFiles();
-			echo ' Checking ' . count($files) . ' ' . $check . ' files';
+			echo ' Checking ' . count($files) . ' ' . $check . ' file' . (count($files) > 1?'s':'');
 			foreach ($files as $filepath) {
 				$output .= strip_tags($this->$checkClass->run($filepath));
 				echo '.';
@@ -155,9 +155,12 @@ class StyleCheckTask extends Shell {
 
         $output = '';
 
+		echo 'Checking ' . count($filesToValidate) . ' file'. (count($filesToValidate) > 1?'s':'');
         foreach ($filesToValidate as $url) {
             $output .= $this->run($url);
+			echo '.';
         }
+		echo "\r\n";
 
         $this->out($output);
     }
