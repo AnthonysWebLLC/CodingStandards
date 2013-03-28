@@ -20,13 +20,27 @@ class StyleCheckTask extends Shell {
 	protected $exts = array();
 
     protected function getAllFiles() {
+		// Sanity Check
 		if(empty($this->exts)){
 			$this->err(__d('cake_console', "No exts set for " . __CLASS__));
 			$this->_stop();
 		}
+
+		// Find
 		$regex = '.*\.' . implode('|.*\.', $this->exts);
         $folder = new Folder($this->path);
         $files = $folder->findRecursive($regex, true);
+
+		// Ignore
+		foreach($files AS $key=>$file){
+			foreach(Configure::read('CodingStandards.PATH_IGNORE_PATTERNS') AS $pathIgnorePattern){
+				if(preg_match($pathIgnorePattern, $file)){
+					unset($files[$key]);
+					continue 2;
+				}
+			}
+		}
+
         return $files;
     }
 

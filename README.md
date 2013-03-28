@@ -25,6 +25,9 @@ You can also run an interactive coding standards shell any time via `Console/cak
 # Why have Coding Standardsor changing ? #
 Amoung many, one of the most prevalent reasons for having Coding Standards is to help make code more easily readbale when you have multiple or changing project contributors.
 
+# Optional Configuration #
+1. See Config/bootstrap.php and override any variables you wish in your own bootstrap.php / core.php / ...
+
 # The standards #
 * PHP - 
 * JavaScript - jQuery's standards
@@ -57,11 +60,9 @@ We'd love you're help! See [README-CONTRIBUTORS.md](README-CONTRIBUTORS.md)
  1. Inspiration for contributing guidelines file copy: cakephp factory girl rails puppet
  1. We should think about using pull requests as primary mean of collaboration. I saw many other open source projects use them for good reasons - notify other project members about recent changes, encourage code review and discussion before merging pull request, others can even push follow-up commits if necessary.
 1. Pick an open source licence and apply
-1. Create exclusions list optional config variable & document as needed
- 1. Also document how exclusion file patterns work (I think we have them for vendors folder).  Perhaps in a new DOCUMENTATION.md
- 1. Also allow wildcards?
- 1. Add a few defaults like WEBROOT/js/vendors and WEBROOT/css/vendors (or is if /js/Vendors?)
- 1. Also a forced inclusions list probably (We sometimes want to check vendor code too -- can we make a pre-commit on a submodule work or.... perhaps could make CS work as submodule of submodule?  Hrmmm feels tricky)
+1. New DOCUMENTATION.md movig extra information outside of quick start in README.md there?
+1. Add a forced inclusions list (We sometimes want to check vendor code too -- can we make a pre-commit on a submodule work or.... perhaps could make CS work as submodule of submodule?  Hrmmm feels tricky)
+ 1. AW Internal: Configure cakephp standard template to check the Coding Standards code with Coding Standards
 1. Make Coding Standards check its self (probably best done via a config variable for custom pathS settings)"
 1. Link to documentation online for the standards
 1. Proofread, spellcheck, cleanup, etc all instructions here
