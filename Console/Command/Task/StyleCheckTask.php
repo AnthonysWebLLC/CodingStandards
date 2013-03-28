@@ -50,7 +50,7 @@ class StyleCheckTask extends Shell {
     }
 
     public function fullReport() {
-        $this->out(__d('cake_console', "Please wait while report is being generated..."));
+        $this->out(__d('cake_console', "Generating report:"));
 
         $reportDateTime = date('Y-m-d H:i:s');
 
@@ -68,9 +68,13 @@ class StyleCheckTask extends Shell {
 			$checkClass = "${check}Check";
 
 			$startCheckGroup = microtime(true);
-			foreach ($this->$checkClass->getAllFiles() as $filepath) {
+			$files = $this->$checkClass->getAllFiles();
+			echo ' Checking ' . count($files) . ' ' . $check . ' files';
+			foreach ($files as $filepath) {
 				$output .= strip_tags($this->$checkClass->run($filepath));
+				echo '.';
 			}
+			echo "\r\n";
 			$secondsRanCheckGroup = microtime(true) - $startCheckGroup;
 			$checkResults[$check] = array('output'=>$output, 'secondsRan'=>$secondsRanCheckGroup);
 		}
