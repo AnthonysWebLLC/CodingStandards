@@ -15,7 +15,10 @@ Then when you clone either use `git clone --recursive <...>` when copying your r
 
 ## Updating your copy ##
 1. Initial setup on your machine
- 1. `git submodule update`
+ 1. `git submodule update --init`
+ 1. `cd app/Plugin/CodingStandards`
+ 1. `ln -s -f ../../Vendor/pre-commit-submodule ./.git/hooks/pre-commit`
+ 1. `chmod +x pre-commit`
 1. Update CodingStandards Submodule
  1. `cd app/Plugin/CodingStandards`
  1. `git checkout master`

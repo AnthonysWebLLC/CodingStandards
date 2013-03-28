@@ -1,0 +1,64 @@
+#!/bin/sh
+echo "Checking changed files against Coding Standards:";
+
+FIRST_CHANGESET=66e7617e7d1766b2fd9c4f5d2986112f1bdc9a88
+
+DIR=`cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd`
+CURRENT_DIR=`pwd`
+# Expected to be in submodule at ~/app/Plugin/CodingStandards
+APP_PATH=$DIR/../../../../
+
+ERRORS="false"
+
+style_check () {
+    FILEPATH=$CURRENT_DIR/$1
+    IGNORE=`cd $APP_PATH && Console/cake CodingStandards.coding_standards_check ignore_file_status $FILEPATH`
+
+    if [ "$IGNORE" == "false" ];
+	then
+		echo " $FILEPATH";
+    	STATUS=`cd $APP_PATH && Console/cake CodingStandards.coding_standards_check check_file $FILEPATH summary`
+	    if [ "$STATUS" == "false" ];
+    	then
+	        echo "$FILE contains errors!"
+        	ERRORS="true"
+    	    cd $APP_PATH && Console/cake CodingStandards.coding_standards_check check_file $FILEPATH full_report
+	    fi
+	fi
+}
+
+
+if git rev-parse --verify HEAD >/dev/null 2>&1; then
+    against=HEAD
+else
+    # put the first changeset hash value in your project here (I think)
+    against=$FIRST_CHANGESET
+fi
+
+# list all added and changed files
+CTP_FILES=`git diff --cached --name-status | grep \.ctp$ | awk '$1 != "D" { print $2 }'`
+PHP_FILES=`git diff --cached --name-status | grep \.php$ | awk '$1 != "D" { print $2 }'`
+JS_FILES=`git diff --cached --name-status | grep \.js$ | awk '$1 != "D" { print $2 }'`
+CSS_FILES=`git diff --cached --name-status | grep \.css$ | awk '$1 != "D" { print $2 }'`
+
+for FILE in $CTP_FILES ; do
+    style_check $FILE
+done
+
+for FILE in $PHP_FILES ; do
+    style_check $FILE
+done
+
+for FILE in $JS_FILES ; do
+    style_check $FILE
+done
+
+for FILE in $CSS_FILES ; do
+    style_check $FILE
+done
+
+if [ "$ERRORS" == "true" ];
+then
+    echo "Aborting commit - please clean your code to follow codding standard first."
+    exit 1
+fi
