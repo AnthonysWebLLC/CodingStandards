@@ -65,7 +65,7 @@ class StyleCheckTask extends Shell {
 		foreach($checks AS $check){
 			$output = '';
 			$checkClass = "${check}Check";
-			foreach ($this->ModelCheck->getAllFiles() as $filepath) {
+			foreach ($this->$checkClass->getAllFiles() as $filepath) {
 				$output .= strip_tags($this->$checkClass->run($filepath));
 			}
 			$checkResults[$check] = $output;
