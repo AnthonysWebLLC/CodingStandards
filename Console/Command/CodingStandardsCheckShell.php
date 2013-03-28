@@ -6,6 +6,9 @@ class CodingStandardsCheckShell extends AppShell {
 	public $tasks = array(
 		'CodingStandards.StyleCheck',
 		'CodingStandards.PHPCheck',
+		'CodingStandards.ModelCheck',
+		'CodingStandards.ViewCheck',
+		'CodingStandards.ControllerCheck',
 		'CodingStandards.JSCheck',
 		'CodingStandards.CSSCheck'
 	);
@@ -25,13 +28,13 @@ class CodingStandardsCheckShell extends AppShell {
 
 		switch ($classToValidate) {
 			case 'M':
-				$this->PHPCheck->execute('model');
+				$this->ModelCheck->execute();
 				break;
 			case 'V':
-				$this->PHPCheck->execute('view');
+				$this->ViewCheck->execute();
 				break;
 			case 'C':
-				$this->PHPCheck->execute('controller');
+				$this->ControllerCheck->execute();
 				break;
 			case 'J':
 				$this->JSCheck->execute();

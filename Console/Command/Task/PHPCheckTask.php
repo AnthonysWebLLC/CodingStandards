@@ -4,19 +4,8 @@ App::uses('StyleCheckTask', 'CodingStandards.Console/Command/Task');
 class PHPCheckTask extends StyleCheckTask {
 	protected $exts = array('php', 'ctp');
 
-    public function execute($classToValidate = false) {
-        switch ($classToValidate) {
-            case 'model':
-            case 'view':
-            case 'controller':
-                $this->path = current(App::path(ucfirst($classToValidate)));
-                $this->_interactive();
-                break;
-            default:
-                $this->out(__d('cake_console', 'Invalid selection.'));
-                exit(0);
-                break;
-        }
+    public function execute() {
+		$this->_interactive();
     }
 
     public function run($path, $summary = false) {

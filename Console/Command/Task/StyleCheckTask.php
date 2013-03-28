@@ -5,7 +5,9 @@ App::uses('File', 'Utility');
 class StyleCheckTask extends Shell {
 
     public $tasks = array(
-        'CodingStandards.PHPCheck',
+        'CodingStandards.ModelCheck',
+        'CodingStandards.ViewCheck',
+        'CodingStandards.ControllerCheck',
         'CodingStandards.JSCheck',
         'CodingStandards.CSSCheck',
         'Template'
@@ -52,37 +54,26 @@ class StyleCheckTask extends Shell {
 
         $reportDateTime = date('Y-m-d H:i:s');
 
-		$this->PHPCheck->path = current(App::path(ucfirst('Model')));
-        $phpModelsOutput = '';
-        foreach ($this->PHPCheck->getAllFiles() as $filepath) {
-	        $phpModelsOutput = strip_tags($this->PHPCheck->run($filepath));
+        $checks = array(
+			'Model',
+			'View',
+			'Controller',
+			'JS',
+			'CSS'
+		);
+		$checkResults = array();
+		foreach($checks AS $check){
+			$output = '';
+			$checkClass = "${check}Check";
+			foreach ($this->ModelCheck->getAllFiles() as $filepath) {
+				$output .= strip_tags($this->$checkClass->run($filepath));
+			}
+			$checkResults[$check] = $output;
 		}
-
-		$this->PHPCheck->path = current(App::path(ucfirst('View')));
-        $phpViewsOutput = '';
-        foreach ($this->PHPCheck->getAllFiles() as $filepath) {
-	        $phpViewsOutput = strip_tags($this->PHPCheck->run($filepath));
-		}
-
-		$this->PHPCheck->path = current(App::path(ucfirst('Controller')));
-		$phpControllersOutput = '';
-        foreach ($this->PHPCheck->getAllFiles() as $filepath) {
-	        $phpControllersOutput = strip_tags($this->PHPCheck->run($filepath));
-		}
-
-		$javascriptOutput = '';
-        foreach ($this->JSCheck->getAllFiles() as $filepath) {
-			$javascriptOutput .= $this->JSCheck->run($filepath);
-		}
-
-        $cssOutput = '';
-        foreach ($this->CSSCheck->getAllFiles() as $filepath) {
-            $cssOutput .= $this->CSSCheck->run($filepath);
-        }
 
         $pluginPath = Configure::read('CodingStandards.PLUGIN_PATH');
         $this->Template->templatePaths = array($pluginPath . DS . 'Console' . DS . 'Templates' . DS);
-        $this->Template->set(compact('reportDateTime', 'phpModelsOutput', 'phpViewsOutput', 'phpControllersOutput', 'javascriptOutput', 'cssOutput'));
+        $this->Template->set(compact('reportDateTime', 'checkResults'));
 
         $HTMLreport = $this->Template->generate('code_style_checks', 'report');
         $filepath = current(App::path('View')) . DS . 'Pages' . DS . 'code_style_check_report.ctp';
@@ -121,7 +112,7 @@ class StyleCheckTask extends Shell {
         }
     }
 
-	protected function _interactive() {
+	public function _interactive() {
         $this->hr();
         $this->out(__d('cake_console', "Validate file\nPath: %s", $this->path));
         $this->hr();
