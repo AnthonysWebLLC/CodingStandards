@@ -106,7 +106,11 @@ class StyleCheckTask extends Shell {
 			if(strlen($result)) {
 				$result = "File formatting errors:\r\n$result\r\n";
 			} else {
-				$result = "[Base file formatting checks passed]";
+				if(strlen($path) > 40){
+					$path = '...' . substr($path, -37);
+				}
+				$path = sprintf("%40s", $path);
+				$result = "[File: $path] [Base file formatting checks passed]";
 			}
             return $result;
         }
