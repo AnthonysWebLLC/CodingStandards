@@ -7,15 +7,9 @@ class PHPCheckTask extends StyleCheckTask {
     public function execute($classToValidate = false) {
         switch ($classToValidate) {
             case 'model':
-                $this->path = current(App::path('Model'));
-                $this->_interactive();
-                break;
             case 'view':
-                $this->path = current(App::path('View'));
-                $this->_interactive();
-                break;
             case 'controller':
-                $this->path = current(App::path('Controller'));
+                $this->path = current(App::path(ucfirst($classToValidate)));
                 $this->_interactive();
                 break;
             default:

@@ -52,22 +52,31 @@ class StyleCheckTask extends Shell {
 
         $reportDateTime = date('Y-m-d H:i:s');
 
-        $modelsPath = current(App::path('Model'));
-        $phpModelsOutput = strip_tags($this->PHPCheck->run($modelsPath));
+		$this->PHPCheck->path = current(App::path(ucfirst('Model')));
+        $phpModelsOutput = '';
+        foreach ($this->PHPCheck->getAllFiles() as $filepath) {
+	        $phpModelsOutput = strip_tags($this->PHPCheck->run($filepath));
+		}
 
-        $viewsPath = current(App::path('View'));
-        $phpViewsOutput = strip_tags($this->PHPCheck->run($viewsPath));
+		$this->PHPCheck->path = current(App::path(ucfirst('View')));
+        $phpViewsOutput = '';
+        foreach ($this->PHPCheck->getAllFiles() as $filepath) {
+	        $phpViewsOutput = strip_tags($this->PHPCheck->run($filepath));
+		}
 
-        $controllersPath = current(App::path('Controller'));
-        $phpControllersOutput = strip_tags($this->PHPCheck->run($controllersPath));
+		$this->PHPCheck->path = current(App::path(ucfirst('Controller')));
+		$phpControllersOutput = '';
+        foreach ($this->PHPCheck->getAllFiles() as $filepath) {
+	        $phpControllersOutput = strip_tags($this->PHPCheck->run($filepath));
+		}
 
-        $javascriptPath = Configure::read('CodingStandards.JS_PATH');
-        $javascriptOutput = $this->JSCheck->run("$javascriptPath/*");
+		$javascriptOutput = '';
+        foreach ($this->JSCheck->getAllFiles() as $filepath) {
+			$javascriptOutput .= $this->JSCheck->run($filepath);
+		}
 
-        $this->path = Configure::read('CodingStandards.CSS_PATH');
-        $this->_files = $this->CSSCheck->getAllFiles();
         $cssOutput = '';
-        foreach ($this->_files as $filepath) {
+        foreach ($this->CSSCheck->getAllFiles() as $filepath) {
             $cssOutput .= $this->CSSCheck->run($filepath);
         }
 
