@@ -1,4 +1,5 @@
 #!/bin/sh
+echo "Checking changed files against Coding Standards:";
 
 FIRST_CHANGESET=66e7617e7d1766b2fd9c4f5d2986112f1bdc9a88
 
@@ -10,10 +11,11 @@ ERRORS="false"
 
 style_check () {
     FILEPATH=$CURRENT_DIR/$1
-    IGNORE=`cd $APP_PATH && Console/cake CodingStandards.coding_standards_check _ignore_file_status $FILEPATH`
+    IGNORE=`cd $APP_PATH && Console/cake CodingStandards.coding_standards_check ignore_file_status $FILEPATH`
 
     if [ "$IGNORE" == "false" ];
 	then
+		echo " $FILEPATH";
     	STATUS=`cd $APP_PATH && Console/cake CodingStandards.coding_standards_check check_file $FILEPATH summary`
 	    if [ "$STATUS" == "false" ];
     	then
