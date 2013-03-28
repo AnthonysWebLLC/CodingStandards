@@ -22,7 +22,7 @@ class PHPCheckTask extends StyleCheckTask {
 			if(strlen($output)){
 				$return = "$parentOutput\r\nPHP Coding Standards errors:\r\n$output\r\n";
 			} else {
-				$return = "$parentOutput\r\n[PHP Coding Standards checks passed]";
+				$return = "$parentOutput [PHP Coding Standards checks passed] \r\n";
 			}
 			return $return;
         }

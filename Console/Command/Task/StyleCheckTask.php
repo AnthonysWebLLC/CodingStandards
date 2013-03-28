@@ -104,9 +104,9 @@ class StyleCheckTask extends Shell {
             exec("phpcs --warning-severity=0  --extensions=php,ctp,js --standard=CakePHP --sniffs=$sniffs $path", $result);
             $result = implode("\r\n", $result);
 			if(strlen($result)) {
-				$result = "File formatting errors:\r\n$result";
+				$result = "File formatting errors:\r\n$result\r\n";
 			} else {
-				$result = "[Base file formatting checks passed]\r\n";
+				$result = "[Base file formatting checks passed]";
 			}
             return $result;
         }
