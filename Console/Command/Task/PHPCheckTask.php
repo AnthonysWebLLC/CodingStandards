@@ -11,13 +11,11 @@ class PHPCheckTask extends StyleCheckTask {
     public function run($path, $summary = false) {
         $parentOutput = parent::run($path, $summary);
 
+        exec("phpcs --warning-severity=0 --extensions=ctp,php --standard=CakePHP $path", $result);
+		$result = $this->_strip_legacy_camel_case_errors($result);
         if ($summary) {
-            exec("phpcs --warning-severity=0 --extensions=ctp,php --standard=CakePHP --report=summary $path", $result);
-			$result = $this->_strip_legacy_camel_case_errors($result);
             return empty($result) && $parentOutput;
         } else {
-            exec("phpcs --warning-severity=0 --extensions=ctp,php --standard=CakePHP $path", $result);
-			$result = $this->_strip_legacy_camel_case_errors($result);
             $output = implode("\r\n", $result);
 			if(strlen($output)){
 				$return = "$parentOutput\r\nPHP Coding Standards errors:\r\n$output\r\n";

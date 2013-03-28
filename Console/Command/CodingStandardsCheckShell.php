@@ -80,6 +80,9 @@ class CodingStandardsCheckShell extends AppShell {
 		}
 
 		switch ($filetype) {
+			case 'ctp':
+				$output = $this->ViewCheck->run($filepath, $summary);
+				break;
 			case 'php':
 				$output = $this->PHPCheck->run($filepath, $summary);
 				break;
