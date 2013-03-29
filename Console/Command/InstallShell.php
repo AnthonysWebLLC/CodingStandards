@@ -17,7 +17,9 @@ class InstallShell extends AppShell {
         }
 
         $this->out('Installing PHP_CodeSniffer');
-        $result = $this->_execCommand("pear install PHP_CodeSniffer");
+        $result = $this->_execCommand("pear channel-discover pear.phpunit.de", false);
+        $result = $this->_execCommand("pear channel-update pear.phpunit.de", false);
+        $result = $this->_execCommand("pear install PHP_CodeSniffer", false);
         if (!$result) {
             $this->out('Aborting install due to errors');
             exit;
@@ -53,9 +55,49 @@ class InstallShell extends AppShell {
         }
 
         $this->out('Installation complete');
+
+        $selection = $this->in('Do you want to install git pre-commit hook?', array('y', 'n'), 'y');
+        if ('y' === $selection) {
+            $this->installGitPreCommitHook();
+        }
     }
 
     public function installGitPreCommitHook() {
+        $pluginPath = Configure::read('CodingStandards.PLUGIN_PATH');
+        $repoPath = ROOT . DS . '.git';
+        $hooksPath = $repoPath . DS . 'hooks' . DS;
+
+        // Check if a directory is a valid Git repository
+        $file = new File($repoPath . DS . 'HEAD');
+        if (!$file->exists()) {
+            $this->out("Not a git repository: $repoPath");
+            exit;
+        }
+
+        $this->out("git repository found at: $repoPath");
+        // END Check if a directory is a valid Git repository
+
+        // Create symbolic link to pre-commit-submodule hook
+        $this->out("Linking pre-commit-submodule to $repoPath:");
+        $sourcePath = $pluginPath . DS . 'Vendor' . DS . 'pre-commit-submodule';
+        $destinationPath = $hooksPath . DS . 'pre-commit-submodule';
+        $result = $this->_execCommand("ln -s -f $sourcePath $destinationPath");
+         if (!$result) {
+            $this->out("ln -s -f $sourcePath $destinationPath failed!");
+            exit;
+        }
+        // END Create symbolic link to pre-commit-submodule hook
+
+        // Make pre-commit-submodule hook executable
+        $this->out("Checking if hooks are executable:");
+        $result = $this->_execCommand("chmod +x $destinationPath");
+         if (!$result) {
+            $this->out("chmod +x $destinationPath");
+            exit;
+        }
+
+        $this->out('git pre-commit hook installation complete');
+        // END Make pre-commit-submodule hook executable
     }
 
     protected function _execCommand($command, $sudo = true) {
@@ -88,25 +130,6 @@ class InstallShell extends AppShell {
                 return $resultVar == 0;
                 break;
         }
-    }
-
-    public function inOptions($options, $prompt = null, $default = null) {
-        $valid = false;
-        $max = count($options);
-        while (!$valid) {
-            $len = strlen(count($options) + 1);
-            foreach ($options as $i => $option) {
-                $this->out(sprintf("%${len}d. %s", $i + 1, $option));
-            }
-            if (empty($prompt)) {
-                $prompt = __d('cake_console', 'Make a selection from the choices above');
-            }
-            $choice = $this->in($prompt, null, $default);
-            if (intval($choice) > 0 && intval($choice) <= $max) {
-                $valid = true;
-            }
-        }
-        return $choice - 1;
     }
 
 /**
