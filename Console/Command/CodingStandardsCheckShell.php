@@ -5,6 +5,7 @@ class CodingStandardsCheckShell extends AppShell {
 
 	public $tasks = array(
 		'CodingStandards.StyleCheck',
+		'CodingStandards.AnyCheck',
 		'CodingStandards.PHPCheck',
 		'CodingStandards.ModelCheck',
 		'CodingStandards.ViewCheck',
@@ -14,6 +15,7 @@ class CodingStandardsCheckShell extends AppShell {
 	);
 
 	public function main() {
+		$options = array('M', 'V', 'C', 'J', 'S', 'F', 'Q');
 		$this->out(__d('cake_console', 'Coding Standards Check Shell'));
 		$this->hr();
 		$this->out(__d('cake_console', '[M]odels'));
@@ -21,10 +23,14 @@ class CodingStandardsCheckShell extends AppShell {
 		$this->out(__d('cake_console', '[C]ontrollers'));
 		$this->out(__d('cake_console', '[J]avaScript'));
 		$this->out(__d('cake_console', '[S]tylesheets'));
+		if(count(Configure::read('CodingStandards.ADDITIONAL_PATHS'))){
+			$this->out(__d('cake_console', '[A]dditional'));
+			$options[] = 'A';
+		}
 		$this->out(__d('cake_console', '[F]ull report in HTML format'));
 		$this->out(__d('cake_console', '[Q]uit'));
 
-		$classToValidate = strtoupper($this->in(__d('cake_console', 'What would you like to validate?'), array('M', 'V', 'C', 'J', 'S', 'F', 'Q')));
+		$classToValidate = strtoupper($this->in(__d('cake_console', 'What would you like to validate?'), $options));
 
 		switch ($classToValidate) {
 			case 'M':
@@ -41,6 +47,28 @@ class CodingStandardsCheckShell extends AppShell {
 				break;
 			case 'S':
 				$this->CSSCheck->execute();
+				break;
+			case 'A':
+				// Choose subpath (or auto-select iff one path)
+				$additionalPaths = Configure::read('CodingStandards.ADDITIONAL_PATHS');
+				if(empty($additionalPaths)){
+					$this->out(__d('cake_console', 'No CodingStandards.ADDITIONAL_PATHS defined'));
+					break;
+				} elseif(count($additionalPaths) == 1){
+					$additionalPath				= array_pop($additionalPaths);
+				} else {
+					$options = array();
+					$ii = 0;
+					$this->out(__d('cake_console', 'Additional Paths:'));
+					$this->hr();
+					foreach($additionalPaths AS $additionalPath){
+						$option = $additionalPath;
+						$options[$ii++] = $option;
+					}
+					$additionalPath = $this->inOptions($options, 'Which path?');
+				}
+				$this->AnyCheck->setPath($additionalPath);
+				$this->AnyCheck->execute();
 				break;
 			case 'F':
 				$this->StyleCheck->fullReport();
@@ -191,6 +219,25 @@ class CodingStandardsCheckShell extends AppShell {
 				break;
 		}
 	}
+
+	public function inOptions($options, $prompt = null, $default = null) {
+        $valid = false;
+        $max = count($options);
+        while (!$valid) {
+            $len = strlen(count($options) + 1);
+            foreach ($options as $i => $option) {
+                $this->out(sprintf("%${len}d. %s", $i + 1, $option));
+            }
+            if (empty($prompt)) {
+                $prompt = __d('cake_console', 'Make a selection from the choices above');
+            }
+            $choice = $this->in($prompt, null, $default);
+            if (intval($choice) > 0 && intval($choice) <= $max) {
+                $valid = true;
+            }
+        }
+        return $choice - 1;
+    }
 
 /**
  * Override welcome method to remove a header for the shell

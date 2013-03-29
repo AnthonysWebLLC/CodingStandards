@@ -15,9 +15,13 @@ class StyleCheckTask extends Shell {
 
     protected $path = null;
 
-    protected $files = array();
+	protected $exts = null;
 
-	protected $exts = array();
+	protected $files = array();
+
+	public function checksExt($ext){
+		return in_array(strtolower($ext), array_map('strtolower', $this->exts));
+	}
 
     protected function getAllFiles() {
 		// Sanity Check
@@ -27,7 +31,7 @@ class StyleCheckTask extends Shell {
 		}
 
 		// Find
-		$regex = '.*\.' . implode('|.*\.', $this->exts);
+		$regex = '.*\.' . implode('$|.*\.', $this->exts) . '$';
         $folder = new Folder($this->path);
         $files = $folder->findRecursive($regex, true);
 

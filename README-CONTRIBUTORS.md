@@ -9,6 +9,8 @@ Weather a core or community developer we suggest adding a submodule to your exis
 1. git submodule add git@github.com:AnthonysWebLLC/CodingStandards.git ./app/Plugin/CodingStandards
  1. (Replace git repository URL if you've forked)
 1. git commit -m "Adding CodingStandards Submodule"
+1. [Add to ~/app/Config/bootstrap.php to check Coding Standards code with Coding Standards via something like copying the example past Configuration::write('CodingStandards.ADDITIONAL_PATHS', ...)]
+ 1. Caveat: If we start to allow Coding Standards sniffer customizations / configuration we may run into trouble here
 1. Console/cake CodingStandards.coding_standards_check install
 
 Then when you clone either use `git clone --recursive <...>` when copying your repository or run `git submodule update --init` to get all the files
