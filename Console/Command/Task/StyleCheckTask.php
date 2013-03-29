@@ -16,7 +16,7 @@ class StyleCheckTask extends Shell {
 		'Template'
 	);
 
-	protected $path = null;
+	protected $_path = null;
 
 	protected $exts = null;
 
@@ -33,7 +33,7 @@ class StyleCheckTask extends Shell {
 
 		// Find
 		$regex = '.*\.' . implode('$|.*\.', $this->exts) . '$';
-		$folder = new Folder($this->path);
+		$folder = new Folder($this->_path);
 		$files = $folder->findRecursive($regex, true);
 
 		// Ignore
@@ -166,7 +166,7 @@ class StyleCheckTask extends Shell {
 
 	protected function _interactive() {
 		$this->hr();
-		$this->out(__d('cake_console', "Validate file\nPath: %s", $this->path));
+		$this->out(__d('cake_console', "Validate file\nPath: %s", $this->_path));
 		$this->hr();
 
 		$files = $this->_getAllFiles();

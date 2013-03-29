@@ -6,12 +6,10 @@ App::uses('JSCheckTask', 'CodingStandards.Console/Command/Task');
 
 class AnyCheckTask extends StyleCheckTask {
 
-	protected $path = null;
-
 	protected $exts = array('php', 'ctp', 'js', 'css');
 
 	public function setPath($path) {
-		$this->path = $path;
+		$this->_path = $path;
 	}
 
 	public function execute() {

@@ -7,6 +7,6 @@ class ConfigCheckTask extends PHPCheckTask {
 
 	public function __construct() {
 		parent::__construct();
-		$this->path = APP . 'Config';
+		$this->_path = APP . 'Config';
 	}
 }

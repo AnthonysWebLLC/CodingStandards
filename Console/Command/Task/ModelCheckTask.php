@@ -7,6 +7,6 @@ class ModelCheckTask extends PHPCheckTask {
 
 	public function __construct() {
 		parent::__construct();
-		$this->path = current(App::path('Model'));
+		$this->_path = current(App::path('Model'));
 	}
 }

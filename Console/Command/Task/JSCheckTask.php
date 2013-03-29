@@ -6,7 +6,7 @@ class JSCheckTask extends StyleCheckTask {
 	protected $exts = array('js');
 
 	public function execute() {
-		$this->path = Configure::read('CodingStandards.JS_PATH');
+		$this->_path = Configure::read('CodingStandards.JS_PATH');
 		$this->_interactive();
 	}
 

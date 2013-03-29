@@ -5,6 +5,6 @@ class ConsoleCheckTask extends AnyCheckTask {
 
 	public function __construct() {
 		parent::__construct();
-		$this->path = current(App::path('Console'));
+		$this->_path = current(App::path('Console'));
 	}
 }

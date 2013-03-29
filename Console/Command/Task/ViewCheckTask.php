@@ -7,6 +7,6 @@ class ViewCheckTask extends PHPCheckTask {
 
 	public function __construct() {
 		parent::__construct();
-		$this->path = current(App::path('View'));
+		$this->_path = current(App::path('View'));
 	}
 }

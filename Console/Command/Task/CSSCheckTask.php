@@ -6,7 +6,7 @@ class CSSCheckTask extends StyleCheckTask {
 	protected $exts = array('css');
 
 	public function execute() {
-		$this->path = Configure::read('CodingStandards.CSS_PATH');
+		$this->_path = Configure::read('CodingStandards.CSS_PATH');
 		$this->_interactive();
 	}
 
