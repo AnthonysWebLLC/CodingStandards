@@ -5,6 +5,7 @@ App::uses('File', 'Utility');
 class StyleCheckTask extends Shell {
 
     public $tasks = array(
+        'CodingStandards.AnyCheck',
         'CodingStandards.ModelCheck',
         'CodingStandards.ViewCheck',
         'CodingStandards.ControllerCheck',
@@ -96,11 +97,27 @@ class StyleCheckTask extends Shell {
 			$secondsRanCheckGroup = microtime(true) - $startCheckGroup;
 			$checkResults[$check] = array('output'=>$output, 'secondsRan'=>$secondsRanCheckGroup);
 		}
+
+		foreach(Configure::read('CodingStandards.ADDITIONAL_PATHS') AS $additionalPath){
+			$output = '';
+
+			$startCheckGroup = microtime(true);
+			$this->AnyCheck->setPath($additionalPath);
+			$files = $this->AnyCheck->getAllFiles();
+			echo ' Checking ' . count($files) . ' Additional file' . (count($files) > 1?'s':'') . ' in ' . $additionalPath;
+			foreach ($files as $filepath) {
+				$output .= strip_tags($this->AnyCheck->run($filepath));
+				echo '.';
+			}
+			echo "\r\n";
+			$secondsRanCheckGroup = microtime(true) - $startCheckGroup;
+			$checkResults["Additional::$additionalPath"] = array('output'=>$output, 'secondsRan'=>$secondsRanCheckGroup);
+		}
 		$secondsRan = microtime(true) - $start;
 
         $pluginPath = Configure::read('CodingStandards.PLUGIN_PATH');
         $this->Template->templatePaths = array($pluginPath . DS . 'Console' . DS . 'Templates' . DS);
-        $this->Template->set(compact('reportDateTime', 'checkResults', 'secondsRan'));
+        $this->Template->set(compact('reportDateTime', 'checkResults', 'secondsRan', 'additionalCheckResults'));
 
         $HTMLreport = $this->Template->generate('code_style_checks', 'report');
         $filepath = current(App::path('View')) . DS . 'Pages' . DS . 'code_style_check_report.ctp';
