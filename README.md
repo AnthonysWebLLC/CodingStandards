@@ -8,7 +8,7 @@ A full CakePHP Coding Standards stack centered around pre-commit automated testi
 
 # Installation - Each development server #
 1. `git submodule update`
-1. `Console/cake CodingStandards.coding_standards_check install`
+1. `Console/cake CodingStandards.install`
 1. `ln -s -f /home/domains/domains/{sub.domain.tld}/app/Plugin/CodingStandards/Vendor/pre-commit .git/hooks/pre-commit`
 1. `chmod +x /home/domains/domains/{sub.domain.tld}/app/Plugin/CodingStandards/Vendor/pre-commit`
 1. Optional: Add Configure::write('CodingStandards.SERVER_NAME', '<Insert Accessible URL HERE>')
@@ -20,9 +20,9 @@ A full CakePHP Coding Standards stack centered around pre-commit automated testi
 # Use #
 After installing whenever you a attempt a commit the coding standards plugin will automatically check all changed code and present a warning message if anything doesn't follow the standards.  You can skip this check via `git commit -n`
 
-You can also run an interactive coding standards shell any time via `Console/cake CodingStandards.coding_standards_check`
+You can also run an interactive coding standards shell any time via `Console/cake CodingStandards.check`
 
-Or you can check an individual file with `Console/cake CodingStandards.coding_standards_check check_file [FILE] [(summary|full_report)]`
+Or you can check an individual file with `Console/cake CodingStandards.check check_file [FILE] [(summary|full_report)]`
 
 # Why have Coding Standardsor changing ? #
 Amoung many, one of the most prevalent reasons for having Coding Standards is to help make code more easily readbale when you have multiple or changing project contributors.
@@ -31,7 +31,7 @@ Amoung many, one of the most prevalent reasons for having Coding Standards is to
 1. See Config/bootstrap.php and override any variables you wish in your own bootstrap.php / core.php / ...
 
 # The standards #
-* PHP - 
+* PHP -
 * JavaScript - jQuery's standards
 * ?HTML - W3C Validation / Google Coding Standards?
 * ?CSS - W3C / Google Coding Standards?

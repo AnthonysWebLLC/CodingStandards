@@ -11,17 +11,17 @@ ERRORS="false"
 
 style_check () {
     FILEPATH=$CURRENT_DIR/$1
-    IGNORE=`cd $APP_PATH && Console/cake CodingStandards.coding_standards_check ignore_file_status $FILEPATH`
+    IGNORE=`cd $APP_PATH && Console/cake CodingStandards.check ignore_file_status $FILEPATH`
 
     if [ "$IGNORE" == "false" ];
 	then
 		echo " $FILEPATH";
-    	STATUS=`cd $APP_PATH && Console/cake CodingStandards.coding_standards_check check_file $FILEPATH summary`
+    	STATUS=`cd $APP_PATH && Console/cake CodingStandards.check check_file $FILEPATH summary`
 	    if [ "$STATUS" == "false" ];
     	then
 	        echo "$FILE contains errors!"
         	ERRORS="true"
-    	    cd $APP_PATH && Console/cake CodingStandards.coding_standards_check check_file $FILEPATH full_report
+    	    cd $APP_PATH && Console/cake CodingStandards.check check_file $FILEPATH full_report
 	    fi
 	fi
 }
