@@ -77,18 +77,18 @@ class InstallShell extends AppShell {
         $this->out("git repository found at: $repoPath");
         // END Check if a directory is a valid Git repository
 
-        // Create symbolic link to pre-commit-submodule hook
-        $this->out("Linking pre-commit-submodule to $repoPath:");
-        $sourcePath = $pluginPath . DS . 'Vendor' . DS . 'pre-commit-submodule';
-        $destinationPath = $hooksPath . DS . 'pre-commit-submodule';
+        // Create symbolic link to pre-commit hook
+        $sourcePath = $pluginPath . DS . 'Vendor' . DS . 'pre-commit';
+        $destinationPath = $hooksPath . DS . 'pre-commit';
+        $this->out("Creating symbolic link from pre-commit to $destinationPath:");
         $result = $this->_execCommand("ln -s -f $sourcePath $destinationPath");
          if (!$result) {
             $this->out("ln -s -f $sourcePath $destinationPath failed!");
             exit;
         }
-        // END Create symbolic link to pre-commit-submodule hook
+        // END Create symbolic link to pre-commit hook
 
-        // Make pre-commit-submodule hook executable
+        // Make pre-commit hook executable
         $this->out("Checking if hooks are executable:");
         $result = $this->_execCommand("chmod +x $destinationPath");
          if (!$result) {
@@ -97,7 +97,7 @@ class InstallShell extends AppShell {
         }
 
         $this->out('git pre-commit hook installation complete');
-        // END Make pre-commit-submodule hook executable
+        // END Make pre-commit hook executable
     }
 
     protected function _execCommand($command, $sudo = true) {
