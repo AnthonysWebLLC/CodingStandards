@@ -3,7 +3,7 @@ App::uses('StyleCheckTask', 'CodingStandards.Console/Command/Task');
 
 class CSSCheckTask extends StyleCheckTask {
 
-	protected $exts = array('css');
+	protected $_exts = array('css');
 
 	public function execute() {
 		$this->_path = Configure::read('CodingStandards.CSS_PATH');

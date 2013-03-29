@@ -18,21 +18,21 @@ class StyleCheckTask extends Shell {
 
 	protected $_path = null;
 
-	protected $exts = null;
+	protected $_exts = null;
 
 	public function checksExt($ext) {
-		return in_array(strtolower($ext), array_map('strtolower', $this->exts));
+		return in_array(strtolower($ext), array_map('strtolower', $this->_exts));
 	}
 
 	protected function _getAllFiles() {
 		// Sanity Check
-		if (empty($this->exts)) {
+		if (empty($this->_exts)) {
 			$this->err(__d('cake_console', "No exts set for " . __CLASS__));
 			$this->_stop();
 		}
 
 		// Find
-		$regex = '.*\.' . implode('$|.*\.', $this->exts) . '$';
+		$regex = '.*\.' . implode('$|.*\.', $this->_exts) . '$';
 		$folder = new Folder($this->_path);
 		$files = $folder->findRecursive($regex, true);
 
@@ -171,7 +171,7 @@ class StyleCheckTask extends Shell {
 
 		$files = $this->_getAllFiles();
 		if (empty($files)) {
-			$this->out("No " . implode(',', $this->exts) . " files found");
+			$this->out("No " . implode(',', $this->_exts) . " files found");
 			return;
 		}
 

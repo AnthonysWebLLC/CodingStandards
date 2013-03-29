@@ -6,7 +6,7 @@ App::uses('JSCheckTask', 'CodingStandards.Console/Command/Task');
 
 class AnyCheckTask extends StyleCheckTask {
 
-	protected $exts = array('php', 'ctp', 'js', 'css');
+	protected $_exts = array('php', 'ctp', 'js', 'css');
 
 	public function setPath($path) {
 		$this->_path = $path;

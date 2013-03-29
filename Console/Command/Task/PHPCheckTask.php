@@ -3,7 +3,7 @@ App::uses('StyleCheckTask', 'CodingStandards.Console/Command/Task');
 
 class PHPCheckTask extends StyleCheckTask {
 
-	protected $exts = array('php', 'ctp');
+	protected $_exts = array('php', 'ctp');
 
 	public function execute() {
 		$this->_interactive();

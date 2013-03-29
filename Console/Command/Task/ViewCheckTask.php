@@ -3,7 +3,7 @@ App::uses('PHPCheckTask', 'CodingStandards.Console/Command/Task');
 
 class ViewCheckTask extends PHPCheckTask {
 
-	protected $exts = array('ctp');
+	protected $_exts = array('ctp');
 
 	public function __construct() {
 		parent::__construct();
