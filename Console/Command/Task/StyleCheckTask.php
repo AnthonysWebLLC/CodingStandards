@@ -20,8 +20,6 @@ class StyleCheckTask extends Shell {
 
 	protected $exts = null;
 
-	protected $files = array();
-
 	public function checksExt($ext) {
 		return in_array(strtolower($ext), array_map('strtolower', $this->exts));
 	}
@@ -171,13 +169,13 @@ class StyleCheckTask extends Shell {
 		$this->out(__d('cake_console', "Validate file\nPath: %s", $this->path));
 		$this->hr();
 
-		$this->_files = $this->getAllFiles();
-		if (empty($this->_files)) {
+		$files = $this->getAllFiles();
+		if (empty($files)) {
 			$this->out("No " . implode(',', $this->exts) . " files found");
 			return;
 		}
 
-		$options = array_merge($this->_files, array('All files'));
+		$options = array_merge($files, array('All files'));
 
 		$option = $this->inOptions($options, 'Choose which file you want to validate:');
 
@@ -185,7 +183,7 @@ class StyleCheckTask extends Shell {
 
 		$filesToValidate = array();
 		if ($filename == 'All files') {
-			foreach ($this->_files as $filepath) {
+			foreach ($files as $filepath) {
 				$filesToValidate[] = $filepath;
 			}
 		} else {
