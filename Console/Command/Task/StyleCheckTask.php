@@ -91,9 +91,13 @@ class StyleCheckTask extends Shell {
 			$startCheckGroup = microtime(true);
 			$files = $this->$checkClass->_getAllFiles();
 			echo ' Checking ' . count($files) . ' ' . $check . ' file' . (count($files) > 1?'s':'');
-			foreach ($files as $filepath) {
-				$output .= strip_tags($this->$checkClass->run($filepath));
-				echo '.';
+			if (empty($files)) {
+				$output .= "No $check files found";
+			} else {
+				foreach ($files as $filepath) {
+					$output .= strip_tags($this->$checkClass->run($filepath));
+					echo '.';
+				}
 			}
 			echo "\r\n";
 			$secondsRanCheckGroup = microtime(true) - $startCheckGroup;
