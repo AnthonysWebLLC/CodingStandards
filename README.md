@@ -76,3 +76,6 @@ We'd love you're help! See [README-CONTRIBUTORS.md](README-CONTRIBUTORS.md)
 1. Make screencast demonstrating how it works
 1. Promote this project @ CakePHP
 1. Add HTML validation (via w3c API / file upload method with full action rendering? Would probably need configuration in project to do this, unless can figure out a way to do it right on .ctp files non-rendered)
+1. Add markdown syntax checking?
+1. Add things to do deeper code analysis, like redundency checks
+ 1. Perhaps not good as a prt of this project, but something seperate?
