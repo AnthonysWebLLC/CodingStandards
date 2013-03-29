@@ -14,12 +14,12 @@ class AnyCheckTask extends StyleCheckTask {
 		$this->path = $path;
 	}
 
-    public function execute() {
+	public function execute() {
 		$this->_interactive();
-    }
+	}
 
-    public function run($path, $summary = false) {
-        $parentOutput = parent::run($path, $summary);
+	public function run($path, $summary = false) {
+		$parentOutput = parent::run($path, $summary);
 
 		$ext = pathinfo($path, PATHINFO_EXTENSION);
 
@@ -30,5 +30,5 @@ class AnyCheckTask extends StyleCheckTask {
 				return $CheckTaskObject->run($path);
 			}
 		}
-    }
+	}
 }

@@ -152,23 +152,23 @@ class CheckShell extends AppShell {
 	}
 
 	public function inOptions($options, $prompt = null, $default = null) {
-        $valid = false;
-        $max = count($options);
-        while (!$valid) {
-            $len = strlen(count($options) + 1);
-            foreach ($options as $i => $option) {
-                $this->out(sprintf("%${len}d. %s", $i + 1, $option));
-            }
-            if (empty($prompt)) {
-                $prompt = __d('cake_console', 'Make a selection from the choices above');
-            }
-            $choice = $this->in($prompt, null, $default);
-            if (intval($choice) > 0 && intval($choice) <= $max) {
-                $valid = true;
-            }
-        }
-        return $choice - 1;
-    }
+		$valid = false;
+		$max = count($options);
+		while (!$valid) {
+			$len = strlen(count($options) + 1);
+			foreach ($options as $i => $option) {
+				$this->out(sprintf("%${len}d. %s", $i + 1, $option));
+			}
+			if (empty($prompt)) {
+				$prompt = __d('cake_console', 'Make a selection from the choices above');
+			}
+			$choice = $this->in($prompt, null, $default);
+			if (intval($choice) > 0 && intval($choice) <= $max) {
+				$valid = true;
+			}
+		}
+		return $choice - 1;
+	}
 
 /**
  * Override welcome method to remove a header for the shell

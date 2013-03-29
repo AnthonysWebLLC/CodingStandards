@@ -32,7 +32,7 @@ Configure::write('CodingStandards.ADDITIONAL_PATHS', array(
  * * Ignores those added @ CodingStandards.ADDITIONAL_PATHS
  */
 Configure::write('CodingStandards.PATH_IGNORE_PATTERNS', array(
-	'/.*' . '\\' . DS . 'html' . '\\' . DS . 'js' . '\\' . DS . '.*\\.min\\.js$/i',	// Minified JavaScript wouldn't match Coding Standards
+	'/.*' . '\\' . DS . 'html' . '\\' . DS . 'js' . '\\' . DS . '.*\\.min\\.js$/i', // Minified JavaScript wouldn't match Coding Standards
 	'/.*empty$/',																	// Don't check git folder placeholders
 	'/.*\\/vendor\\/.*/i'															// Don't check vendor folders
 ));

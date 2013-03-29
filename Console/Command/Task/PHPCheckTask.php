@@ -4,30 +4,30 @@ App::uses('StyleCheckTask', 'CodingStandards.Console/Command/Task');
 class PHPCheckTask extends StyleCheckTask {
 	protected $exts = array('php', 'ctp');
 
-    public function execute() {
+	public function execute() {
 		$this->_interactive();
-    }
+	}
 
-    public function run($path, $summary = false) {
-        $parentOutput = parent::run($path, $summary);
+	public function run($path, $summary = false) {
+		$parentOutput = parent::run($path, $summary);
 
 		$start = microtime(true);
-        exec("phpcs --warning-severity=0 --extensions=ctp,php --standard=CakePHP $path", $result);
+		exec("phpcs --warning-severity=0 --extensions=ctp,php --standard=CakePHP $path", $result);
 		$result = $this->_strip_legacy_camel_case_errors($result);
 		$secondsRan = microtime(true) - $start;
-        if ($summary) {
-            return empty($result) && $parentOutput;
-        } else {
-            $output = implode("\r\n", $result);
+		if ($summary) {
+			return empty($result) && $parentOutput;
+		} else {
+			$output = implode("\r\n", $result);
 			if(strlen($output)){
 				$return = "$parentOutput\r\nPHP Coding Standards errors:\r\n$output\r\n";
 			} else {
 				$return = "$parentOutput [PHP Coding Standards checks passed (".sprintf('%01.2f', $secondsRan)."s)] \r\n";
 			}
 			return $return;
-        }
+		}
 
-    }
+	}
 
 	private function _strip_legacy_camel_case_errors($result_lines){
 		$result_lines = $this->_strip_errors($result_lines, "Variable \"title_for_layout\" is not in valid camel caps format");
