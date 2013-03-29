@@ -24,7 +24,7 @@ class StyleCheckTask extends Shell {
 		return in_array(strtolower($ext), array_map('strtolower', $this->exts));
 	}
 
-	protected function getAllFiles() {
+	protected function _getAllFiles() {
 		// Sanity Check
 		if (empty($this->exts)) {
 			$this->err(__d('cake_console', "No exts set for " . __CLASS__));
@@ -89,7 +89,7 @@ class StyleCheckTask extends Shell {
 			$checkClass = "${check}Check";
 
 			$startCheckGroup = microtime(true);
-			$files = $this->$checkClass->getAllFiles();
+			$files = $this->$checkClass->_getAllFiles();
 			echo ' Checking ' . count($files) . ' ' . $check . ' file' . (count($files) > 1?'s':'');
 			foreach ($files as $filepath) {
 				$output .= strip_tags($this->$checkClass->run($filepath));
@@ -105,7 +105,7 @@ class StyleCheckTask extends Shell {
 
 			$startCheckGroup = microtime(true);
 			$this->AnyCheck->setPath($additionalPath);
-			$files = $this->AnyCheck->getAllFiles();
+			$files = $this->AnyCheck->_getAllFiles();
 			echo ' Checking ' . count($files) . ' Additional file' . (count($files) > 1?'s':'') . ' in ' . $additionalPath;
 			foreach ($files as $filepath) {
 				$output .= strip_tags($this->AnyCheck->run($filepath));
@@ -169,7 +169,7 @@ class StyleCheckTask extends Shell {
 		$this->out(__d('cake_console', "Validate file\nPath: %s", $this->path));
 		$this->hr();
 
-		$files = $this->getAllFiles();
+		$files = $this->_getAllFiles();
 		if (empty($files)) {
 			$this->out("No " . implode(',', $this->exts) . " files found");
 			return;
