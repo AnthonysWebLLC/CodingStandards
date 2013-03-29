@@ -31,7 +31,7 @@ class CheckShell extends AppShell {
 			$this->out(__d('cake_console', '[A]dditional'));
 			$options[] = 'A';
 		}
-		$this->out(__d('cake_console', '[F]ull report in HTML format'));
+		$this->out(__d('cake_console', '[F]ull HTML report'));
 		$this->out(__d('cake_console', '[Q]uit'));
 
 		$classToValidate = strtoupper($this->in(__d('cake_console', 'What would you like to validate?'), $options));
