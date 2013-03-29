@@ -11,6 +11,8 @@ class StyleCheckTask extends Shell {
         'CodingStandards.ControllerCheck',
         'CodingStandards.JSCheck',
         'CodingStandards.CSSCheck',
+        'CodingStandards.ConfigCheck',
+        'CodingStandards.ConsoleCheck',
         'Template'
     );
 
@@ -78,7 +80,9 @@ class StyleCheckTask extends Shell {
 			'View',
 			'Controller',
 			'JS',
-			'CSS'
+			'CSS',
+			'Config',
+			'Console'
 		);
 		$start = microtime(true);
 		$checkResults = array();

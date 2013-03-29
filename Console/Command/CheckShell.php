@@ -11,11 +11,13 @@ class CheckShell extends AppShell {
 		'CodingStandards.ViewCheck',
 		'CodingStandards.ControllerCheck',
 		'CodingStandards.JSCheck',
-		'CodingStandards.CSSCheck'
+		'CodingStandards.CSSCheck',
+		'CodingStandards.ConfigCheck',
+		'CodingStandards.ConsoleCheck'
 	);
 
 	public function main() {
-		$options = array('M', 'V', 'C', 'J', 'S', 'F', 'Q');
+		$options = array('M', 'V', 'C', 'J', 'S', 'G', 'E', 'F', 'Q');
 		$this->out(__d('cake_console', 'Coding Standards Check Shell'));
 		$this->hr();
 		$this->out(__d('cake_console', '[M]odels'));
@@ -23,6 +25,8 @@ class CheckShell extends AppShell {
 		$this->out(__d('cake_console', '[C]ontrollers'));
 		$this->out(__d('cake_console', '[J]avaScript'));
 		$this->out(__d('cake_console', '[S]tylesheets'));
+		$this->out(__d('cake_console', 'Confi[G]'));
+		$this->out(__d('cake_console', 'Consol[E]'));
 		if(count(Configure::read('CodingStandards.ADDITIONAL_PATHS'))){
 			$this->out(__d('cake_console', '[A]dditional'));
 			$options[] = 'A';
@@ -47,6 +51,12 @@ class CheckShell extends AppShell {
 				break;
 			case 'S':
 				$this->CSSCheck->execute();
+				break;
+			case 'G':
+				$this->ConfigCheck->execute();
+				break;
+			case 'E':
+				$this->ConsoleCheck->execute();
 				break;
 			case 'A':
 				// Choose subpath (or auto-select iff one path)
