@@ -61,6 +61,7 @@ We'd love you're help! See [README-CONTRIBUTORS.md](README-CONTRIBUTORS.md)
 1. Integrate all from [CakePHP Coding Standards Google Doc](http://goo.gl/yYtgD) to this repository as needed, perhaps other linked README files, or just links to the documents where that content comes from?
 1. Address misc from Mirko's email on March 17th 2013
  1. I'd love to write unit tests for the plugin and setup TravisCI (example: http://goo.gl/FG9qa). I think it'll make plugin look trustworthy and also friendly for contributors.
+  1. Related thought: Make Coding Standards work out of the box with default CakePHP installtion.  Have the TravisCI pull from latest stable branch of CakePHP on github and run tests that way?
  1. Rename README-CONTRIBUTORS.md into CONTRIBUTING.md to leverage Github's Contributing Guidelines sugar -> https://github.com/blog/1184-contributing-guidelines
  1. Inspiration for contributing guidelines file copy: cakephp factory girl rails puppet
  1. We should think about using pull requests as primary mean of collaboration. I saw many other open source projects use them for good reasons - notify other project members about recent changes, encourage code review and discussion before merging pull request, others can even push follow-up commits if necessary.
