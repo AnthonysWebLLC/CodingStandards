@@ -22,7 +22,6 @@ Configure::write('CodingStandards.CSS_PATH', ROOT . DS . 'html' . DS . 'css');
 
 /**
  * Path patterns to also check in full reports & present option to check on console
- * * These paths will be checked on pre-commit iff they are part of the repository (ie; not a submodule)
  */
 Configure::write('CodingStandards.ADDITIONAL_PATHS', array(
 //	'CodingStandards' => Configure::read('CodingStandards.PLUGIN_PATH')
