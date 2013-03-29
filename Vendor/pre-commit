@@ -1,8 +1,6 @@
 #!/bin/bash
 echo "Checking changed files against Coding Standards:";
 
-FIRST_CHANGESET=66e7617e7d1766b2fd9c4f5d2986112f1bdc9a88
-
 DIR=`cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd`
 CURRENT_DIR=`pwd`
 APP_PATH=$DIR/../../app/
@@ -30,8 +28,7 @@ style_check () {
 if git rev-parse --verify HEAD >/dev/null 2>&1; then
     against=HEAD
 else
-    # put the first changeset hash value in your project here (I think)
-    against=$FIRST_CHANGESET
+    against=4b825dc642cb6eb9a060e54bf8d69288fbee4904
 fi
 
 # list all added and changed files
