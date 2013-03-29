@@ -4,7 +4,7 @@ A full CakePHP Coding Standards stack centered around pre-commit automated testi
 # Installation - Repository #
 1. Copy this repository's files to `~/app/Plugin/CodingStandard`
 1. Add this to your bootstrap.php:
- ```php
+ ```
  if (Configure::read('debug') > 0) {
     CakePlugin::load('CodingStandards', array('bootstrap' => true));
 }
