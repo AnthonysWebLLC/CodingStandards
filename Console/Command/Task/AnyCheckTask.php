@@ -10,7 +10,7 @@ class AnyCheckTask extends StyleCheckTask {
 
 	protected $exts = array('php', 'ctp', 'js', 'css');
 
-	public function setPath($path){
+	public function setPath($path) {
 		$this->path = $path;
 	}
 
@@ -23,10 +23,10 @@ class AnyCheckTask extends StyleCheckTask {
 
 		$ext = pathinfo($path, PATHINFO_EXTENSION);
 
-		foreach(array('PHP', 'CSS', 'JS') AS $LeafCheckType){
+		foreach (array('PHP', 'CSS', 'JS') as $LeafCheckType) {
 			$CheckTaskName = "{$LeafCheckType}CheckTask";
 			$CheckTaskObject = new $CheckTaskName();
-			if($CheckTaskObject->checksExt($ext)){
+			if ($CheckTaskObject->checksExt($ext)) {
 				return $CheckTaskObject->run($path);
 			}
 		}

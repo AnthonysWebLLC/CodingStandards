@@ -2,6 +2,7 @@
 App::uses('StyleCheckTask', 'CodingStandards.Console/Command/Task');
 
 class JSCheckTask extends StyleCheckTask {
+
 	protected $exts = array('js');
 
 	public function execute() {

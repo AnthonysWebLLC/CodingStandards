@@ -22,13 +22,13 @@ class StyleCheckTask extends Shell {
 
 	protected $files = array();
 
-	public function checksExt($ext){
+	public function checksExt($ext) {
 		return in_array(strtolower($ext), array_map('strtolower', $this->exts));
 	}
 
 	protected function getAllFiles() {
 		// Sanity Check
-		if(empty($this->exts)){
+		if (empty($this->exts)) {
 			$this->err(__d('cake_console', "No exts set for " . __CLASS__));
 			$this->_stop();
 		}
@@ -39,9 +39,9 @@ class StyleCheckTask extends Shell {
 		$files = $folder->findRecursive($regex, true);
 
 		// Ignore
-		foreach($files AS $key=>$file){
-			foreach(Configure::read('CodingStandards.PATH_IGNORE_PATTERNS') AS $pathIgnorePattern){
-				if(preg_match($pathIgnorePattern, $file)){
+		foreach ($files as $key => $file) {
+			foreach (Configure::read('CodingStandards.PATH_IGNORE_PATTERNS') as $pathIgnorePattern) {
+				if (preg_match($pathIgnorePattern, $file)) {
 					unset($files[$key]);
 					continue 2;
 				}
@@ -86,7 +86,7 @@ class StyleCheckTask extends Shell {
 		);
 		$start = microtime(true);
 		$checkResults = array();
-		foreach($checks AS $check){
+		foreach ($checks as $check) {
 			$output = '';
 			$checkClass = "${check}Check";
 
@@ -99,10 +99,10 @@ class StyleCheckTask extends Shell {
 			}
 			echo "\r\n";
 			$secondsRanCheckGroup = microtime(true) - $startCheckGroup;
-			$checkResults[$check] = array('output'=>$output, 'secondsRan'=>$secondsRanCheckGroup);
+			$checkResults[$check] = array('output' => $output, 'secondsRan' => $secondsRanCheckGroup);
 		}
 
-		foreach(Configure::read('CodingStandards.ADDITIONAL_PATHS') AS $additionalPath){
+		foreach (Configure::read('CodingStandards.ADDITIONAL_PATHS') as $additionalPath) {
 			$output = '';
 
 			$startCheckGroup = microtime(true);
@@ -115,7 +115,7 @@ class StyleCheckTask extends Shell {
 			}
 			echo "\r\n";
 			$secondsRanCheckGroup = microtime(true) - $startCheckGroup;
-			$checkResults["Additional::$additionalPath"] = array('output'=>$output, 'secondsRan'=>$secondsRanCheckGroup);
+			$checkResults["Additional::$additionalPath"] = array('output' => $output, 'secondsRan' => $secondsRanCheckGroup);
 		}
 		$secondsRan = microtime(true) - $start;
 
@@ -153,27 +153,27 @@ class StyleCheckTask extends Shell {
 			exec("phpcs --warning-severity=0  --extensions=php,ctp,js --standard=CakePHP --sniffs=$sniffs $path", $result);
 			$secondsRan = microtime(true) - $start;
 			$result = implode("\r\n", $result);
-			if(strlen($result)) {
+			if (strlen($result)) {
 				$result = "File formatting errors:\r\n$result\r\n";
 			} else {
-				if(strlen($path) > 40){
+				if (strlen($path) > 40) {
 					$path = '...' . substr($path, -37);
 				}
 				$path = sprintf("%40s", $path);
-				$result = "[File: $path] [Base file formatting checks passed (".sprintf('%01.2f', $secondsRan)."s)]";
+				$result = "[File: $path] [Base file formatting checks passed (" . sprintf('%01.2f', $secondsRan) . "s)]";
 			}
 			return $result;
 		}
 	}
 
-	public function _interactive() {
+	protected function _interactive() {
 		$this->hr();
 		$this->out(__d('cake_console', "Validate file\nPath: %s", $this->path));
 		$this->hr();
 
 		$this->_files = $this->getAllFiles();
-		if(empty($this->_files)){
-			$this->out("No ".implode(',', $this->exts)." files found");
+		if (empty($this->_files)) {
+			$this->out("No " . implode(',', $this->exts) . " files found");
 			return;
 		}
 
@@ -194,7 +194,7 @@ class StyleCheckTask extends Shell {
 
 		$output = '';
 
-		echo 'Checking ' . count($filesToValidate) . ' file'. (count($filesToValidate) > 1?'s':'');
+		echo 'Checking ' . count($filesToValidate) . ' file' . (count($filesToValidate) > 1?'s':'');
 		foreach ($filesToValidate as $url) {
 			$output .= $this->run($url);
 			echo '.';

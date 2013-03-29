@@ -2,6 +2,7 @@
 App::uses('StyleCheckTask', 'CodingStandards.Console/Command/Task');
 
 class CSSCheckTask extends StyleCheckTask {
+
 	protected $exts = array('css');
 
 	public function execute() {
@@ -33,12 +34,12 @@ class CSSCheckTask extends StyleCheckTask {
 		if ($summary) {
 			return strpos($bodyHTML, "Congratulations! No Error Found.");
 		} else {
-			$output = $this->cleanValidatorOutput($bodyHTML);
+			$output = $this->__cleanValidatorOutput($bodyHTML);
 			return "CSS formatting errors:\r\n$output\r\n";
 		}
 	}
 
-	private function cleanValidatorOutput($html) {
+	private function __cleanValidatorOutput($html) {
 		$cssInformationStart = strpos($html, 'Valid CSS information');
 		if ($cssInformationStart) {
 			$html = substr($html, 0, $cssInformationStart);
@@ -52,8 +53,11 @@ class CSSCheckTask extends StyleCheckTask {
 		return trim($html);
 	}
 
+/**
+ * @throws Exception
+ */
 	public function toURL($filepath) {
-		if(!Configure::read('CodingStandards.SERVER_NAME')){
+		if (!Configure::read('CodingStandards.SERVER_NAME')) {
 			throw new Exception("CakePHP config variable CodingStandards.SERVER_NAME not set when trying to get url for $filepath");
 		}
 		preg_match('/\/css\/.*$/i', $filepath, $fileURL);

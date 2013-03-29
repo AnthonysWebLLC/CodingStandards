@@ -27,7 +27,7 @@ class CheckShell extends AppShell {
 		$this->out(__d('cake_console', '[S]tylesheets'));
 		$this->out(__d('cake_console', 'Confi[G]'));
 		$this->out(__d('cake_console', 'Consol[E]'));
-		if(count(Configure::read('CodingStandards.ADDITIONAL_PATHS'))){
+		if (count(Configure::read('CodingStandards.ADDITIONAL_PATHS'))) {
 			$this->out(__d('cake_console', '[A]dditional'));
 			$options[] = 'A';
 		}
@@ -61,17 +61,17 @@ class CheckShell extends AppShell {
 			case 'A':
 				// Choose subpath (or auto-select iff one path)
 				$additionalPaths = Configure::read('CodingStandards.ADDITIONAL_PATHS');
-				if(empty($additionalPaths)){
+				if (empty($additionalPaths)) {
 					$this->out(__d('cake_console', 'No CodingStandards.ADDITIONAL_PATHS defined'));
 					break;
-				} elseif(count($additionalPaths) == 1){
+				} elseif (count($additionalPaths) == 1) {
 					$additionalPath				= array_pop($additionalPaths);
 				} else {
 					$options = array();
 					$ii = 0;
 					$this->out(__d('cake_console', 'Additional Paths:'));
 					$this->hr();
-					foreach($additionalPaths AS $additionalPath){
+					foreach ($additionalPaths as $additionalPath) {
 						$option = $additionalPath;
 						$options[$ii++] = $option;
 					}
@@ -96,8 +96,8 @@ class CheckShell extends AppShell {
 	public function ignore_file_status() {
 		$filepath = $this->args[0];
 		$output = false;
-		foreach(Configure::read('CodingStandards.PATH_IGNORE_PATTERNS') AS $pathIgnorePattern){
-			if(preg_match($pathIgnorePattern, $filepath)){
+		foreach (Configure::read('CodingStandards.PATH_IGNORE_PATTERNS') as $pathIgnorePattern) {
+			if (preg_match($pathIgnorePattern, $filepath)) {
 				$output = true;
 				break;
 			}

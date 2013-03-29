@@ -82,7 +82,7 @@ class InstallShell extends AppShell {
 		$destinationPath = $hooksPath . DS . 'pre-commit';
 		$this->out("Creating symbolic link from pre-commit to $destinationPath:");
 		$result = $this->_execCommand("ln -s -f $sourcePath $destinationPath");
-		 if (!$result) {
+		if (!$result) {
 			$this->out("ln -s -f $sourcePath $destinationPath failed!");
 			exit;
 		}
@@ -91,7 +91,7 @@ class InstallShell extends AppShell {
 		// Make pre-commit hook executable
 		$this->out("Checking if hooks are executable:");
 		$result = $this->_execCommand("chmod +x $destinationPath");
-		 if (!$result) {
+		if (!$result) {
 			$this->out("chmod +x $destinationPath");
 			exit;
 		}
