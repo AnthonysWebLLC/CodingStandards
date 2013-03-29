@@ -5,8 +5,12 @@ class CSSCheckTask extends StyleCheckTask {
 
 	protected $_exts = array('css');
 
-	public function execute() {
+	public function __construct() {
+		parent::__construct();
 		$this->_path = Configure::read('CodingStandards.CSS_PATH');
+	}
+
+	public function execute() {
 		$this->_interactive();
 	}
 
