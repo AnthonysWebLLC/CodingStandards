@@ -46,7 +46,7 @@ Amoung many, one of the most prevalent reasons for having Coding Standards is to
 * ?CSS - W3C Validation API?
 
 # Contributing #
-We'd love you're help! See [CONTRIBUTORS.md](CONTRIBUTORS.md)
+We'd love you're help! See [CONTRIBUTING.md](CONTRIBUTING.md)
 
 # Todo / Ideas #
 1. Move all of this list to somewhere for better organization
