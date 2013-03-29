@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 echo "Checking changed files against Coding Standards:";
 
 FIRST_CHANGESET=66e7617e7d1766b2fd9c4f5d2986112f1bdc9a88
