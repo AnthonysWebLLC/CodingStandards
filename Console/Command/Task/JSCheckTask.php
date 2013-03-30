@@ -14,17 +14,17 @@ class JSCheckTask extends StyleCheckTask {
 		$this->_interactive();
 	}
 
-	public function run($path, $summary = false) {
-		$parentOutput = parent::run($path, $summary);
+	public function run($filepath, $summary = false) {
+		$parentOutput = parent::run($filepath, $summary);
 
 		$pluginPath = Configure::read('CodingStandards.PLUGIN_PATH');
 		$jscheckPath = $pluginPath . DS . 'Vendor' . DS . 'jshint';
 
 		if ($summary) {
-			exec($jscheckPath . DS . "jscheck.sh $path", $result);
+			exec($jscheckPath . DS . "jscheck.sh $filepath", $result);
 			return empty($result) && $parentOutput;
 		} else {
-			exec($jscheckPath . DS . "jscheck.sh $path", $result);
+			exec($jscheckPath . DS . "jscheck.sh $filepath", $result);
 			$output = implode("\r\n", $result);
 		}
 

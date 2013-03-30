@@ -16,16 +16,16 @@ class AnyCheckTask extends StyleCheckTask {
 		$this->_interactive();
 	}
 
-	public function run($path, $summary = false) {
-		$parentOutput = parent::run($path, $summary);
+	public function run($filepath, $summary = false) {
+		$parentOutput = parent::run($filepath, $summary);
 
-		$ext = pathinfo($path, PATHINFO_EXTENSION);
+		$ext = pathinfo($filepath, PATHINFO_EXTENSION);
 
 		foreach (array('PHP', 'CSS', 'JS') as $LeafCheckType) {
 			$CheckTaskName = "{$LeafCheckType}CheckTask";
 			$CheckTaskObject = new $CheckTaskName();
 			if ($CheckTaskObject->checksExt($ext)) {
-				return $CheckTaskObject->run($path);
+				return $CheckTaskObject->run($filepath);
 			}
 		}
 	}

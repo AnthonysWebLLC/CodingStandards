@@ -9,11 +9,11 @@ class PHPCheckTask extends StyleCheckTask {
 		$this->_interactive();
 	}
 
-	public function run($path, $summary = false) {
-		$parentOutput = parent::run($path, $summary);
+	public function run($filepath, $summary = false) {
+		$parentOutput = parent::run($filepath, $summary);
 
 		$start = microtime(true);
-		exec("phpcs --warning-severity=0 --extensions=ctp,php --standard=CakePHP $path", $result);
+		exec("phpcs --warning-severity=0 --extensions=ctp,php --standard=CakePHP $filepath", $result);
 		$result = $this->__stripLegacyCamelCaseErrors($result);
 		$secondsRan = microtime(true) - $start;
 		if ($summary) {

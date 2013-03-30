@@ -135,7 +135,7 @@ class StyleCheckTask extends Shell {
 		$this->out(__d('cake_console', "Open $reportURL in web browser to view report."));
 	}
 
-	public function run($path, $summary = false) {
+	public function run($filepath, $summary = false) {
 		$sniffs = 'Generic.Files.ByteOrderMark'; // Files MUST use only UTF-8 without BOM
 		$sniffs .= 'Generic.WhiteSpace.DisallowSpaceIndent'; // Code MUST use an tab indent, and MUST NOT use spaces for indenting
 		$sniffs .= ',Generic.Files.LineEndings'; // All files MUST use the Unix LF (linefeed) line ending
@@ -148,21 +148,21 @@ class StyleCheckTask extends Shell {
 
 		// Style check for CSS files can last long so it's turned off by default
 		if ($summary) {
-			exec("phpcs --extensions=php,ctp,js --standard=CakePHP --report=summary --sniffs=$sniffs $path", $result);
+			exec("phpcs --extensions=php,ctp,js --standard=CakePHP --report=summary --sniffs=$sniffs $filepath", $result);
 			return empty($result);
 		} else {
 			$start = microtime(true);
-			exec("phpcs --warning-severity=0  --extensions=php,ctp,js --standard=CakePHP --sniffs=$sniffs $path", $result);
+			exec("phpcs --warning-severity=0  --extensions=php,ctp,js --standard=CakePHP --sniffs=$sniffs $filepath", $result);
 			$secondsRan = microtime(true) - $start;
 			$result = implode("\r\n", $result);
 			if (strlen($result)) {
 				$result = "File formatting errors:\r\n$result\r\n";
 			} else {
-				if (strlen($path) > 40) {
-					$path = '...' . substr($path, -37);
+				if (strlen($filepath) > 40) {
+					$filepath = '...' . substr($filepath, -37);
 				}
-				$path = sprintf("%40s", $path);
-				$result = "[File: $path] [Base file formatting checks passed (" . sprintf('%01.2f', $secondsRan) . "s)]";
+				$filepath = sprintf("%40s", $filepath);
+				$result = "[File: $filepath] [Base file formatting checks passed (" . sprintf('%01.2f', $secondsRan) . "s)]";
 			}
 			return $result;
 		}

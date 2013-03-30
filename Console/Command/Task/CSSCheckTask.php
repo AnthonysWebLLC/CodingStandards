@@ -14,13 +14,13 @@ class CSSCheckTask extends StyleCheckTask {
 		$this->_interactive();
 	}
 
-	public function run($path, $summary = false) {
+	public function run($filepath, $summary = false) {
 		App::uses('HttpSocket', 'Network/Http');
 		$HttpSocket = new HttpSocket();
 
 		$validatorURL = "http://jigsaw.w3.org/css-validator/validator";
 		try {
-			$cssFileURL = $this->toURL($path);
+			$cssFileURL = $this->toURL($filepath);
 		} catch (Exception $e) {
 			return $e->getMessage() . "\r\n";
 		}
