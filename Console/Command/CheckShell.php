@@ -76,7 +76,7 @@ class CheckShell extends AppShell {
 						$option = $additionalPath;
 						$options[$ii++] = $option;
 					}
-					$additionalPath = $this->Options->select($options, 'Which path?');
+					$additionalPath = $options[$this->Options->select($options, 'Which path?')];
 				}
 				$this->AnyCheck->setPath($additionalPath);
 				$this->AnyCheck->execute();
