@@ -79,3 +79,6 @@ We'd love you're help! See [CONTRIBUTING.md](CONTRIBUTING.md)
 1. Add things to do deeper code analysis, like redundency checks
  1. Perhaps not good as a prt of this project, but something seperate?
 1. Document caveats with submodules (to use the pre-commit-submodule script, perhaps sanity check the pre-commit hook with --skip-submodules for pre-commit stashing) 
+1. Code cleanup
+ 1. Move logic of /Vendors/check-staged-changes into PHP Plugin code, minimizing BASH script logic
+  1. Along the way / after also cleanup logic to only check files that would be found in full-report, utilizing all configured rules?
