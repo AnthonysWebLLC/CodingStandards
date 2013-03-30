@@ -13,6 +13,7 @@ class StyleCheckTask extends Shell {
 		'CodingStandards.CSSCheck',
 		'CodingStandards.ConfigCheck',
 		'CodingStandards.ConsoleCheck',
+		'CodingStandards.Options',
 		'Template'
 	);
 
@@ -47,25 +48,6 @@ class StyleCheckTask extends Shell {
 		}
 
 		return $files;
-	}
-
-	public function inOptions($options, $prompt = null, $default = null) {
-		$valid = false;
-		$max = count($options);
-		while (!$valid) {
-			$len = strlen(count($options) + 1);
-			foreach ($options as $i => $option) {
-				$this->out(sprintf("%${len}d. %s", $i + 1, $option));
-			}
-			if (empty($prompt)) {
-				$prompt = __d('cake_console', 'Make a selection from the choices above');
-			}
-			$choice = $this->in($prompt, null, $default);
-			if (intval($choice) > 0 && intval($choice) <= $max) {
-				$valid = true;
-			}
-		}
-		return $choice - 1;
 	}
 
 	public function fullReport() {
@@ -180,7 +162,7 @@ class StyleCheckTask extends Shell {
 
 		$options = array_merge($files, array('All files'));
 
-		$option = $this->inOptions($options, 'Choose which file you want to validate:');
+		$option = $this->Options->select($options, 'Choose which file you want to validate:');
 
 		$filename = $options[$option];
 

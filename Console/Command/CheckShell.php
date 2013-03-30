@@ -13,7 +13,8 @@ class CheckShell extends AppShell {
 		'CodingStandards.JSCheck',
 		'CodingStandards.CSSCheck',
 		'CodingStandards.ConfigCheck',
-		'CodingStandards.ConsoleCheck'
+		'CodingStandards.ConsoleCheck',
+		'CodingStandards.Options'
 	);
 
 	public function main() {
@@ -75,7 +76,7 @@ class CheckShell extends AppShell {
 						$option = $additionalPath;
 						$options[$ii++] = $option;
 					}
-					$additionalPath = $this->inOptions($options, 'Which path?');
+					$additionalPath = $this->Options->select($options, 'Which path?');
 				}
 				$this->AnyCheck->setPath($additionalPath);
 				$this->AnyCheck->execute();
@@ -149,25 +150,6 @@ class CheckShell extends AppShell {
 		} else {
 			$this->out($output);
 		}
-	}
-
-	public function inOptions($options, $prompt = null, $default = null) {
-		$valid = false;
-		$max = count($options);
-		while (!$valid) {
-			$len = strlen(count($options) + 1);
-			foreach ($options as $i => $option) {
-				$this->out(sprintf("%${len}d. %s", $i + 1, $option));
-			}
-			if (empty($prompt)) {
-				$prompt = __d('cake_console', 'Make a selection from the choices above');
-			}
-			$choice = $this->in($prompt, null, $default);
-			if (intval($choice) > 0 && intval($choice) <= $max) {
-				$valid = true;
-			}
-		}
-		return $choice - 1;
 	}
 
 /**
