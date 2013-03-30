@@ -146,13 +146,12 @@ class StyleCheckTask extends Shell {
 		$sniffs .= ',Squiz.WhiteSpace.SuperfluousWhitespace.EndFile';
 		$sniffs .= ',Squiz.WhiteSpace.SuperfluousWhitespace.EmptyLines';
 
-		// Style check for CSS files can last long so it's turned off by default
 		if ($summary) {
-			exec("phpcs --extensions=php,ctp,js --standard=CakePHP --report=summary --sniffs=$sniffs $filepath", $result);
+			exec("phpcs --extensions=php,ctp,js,css --standard=CakePHP --report=summary --sniffs=$sniffs $filepath", $result);
 			return empty($result);
 		} else {
 			$start = microtime(true);
-			exec("phpcs --warning-severity=0  --extensions=php,ctp,js --standard=CakePHP --sniffs=$sniffs $filepath", $result);
+			exec("phpcs --warning-severity=0  --extensions=php,ctp,js,css --standard=CakePHP --sniffs=$sniffs $filepath", $result);
 			$secondsRan = microtime(true) - $start;
 			$result = implode("\r\n", $result);
 			if (strlen($result)) {

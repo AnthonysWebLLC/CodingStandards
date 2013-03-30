@@ -15,6 +15,8 @@ class CSSCheckTask extends StyleCheckTask {
 	}
 
 	public function run($filepath, $summary = false) {
+		$parentOutput = parent::run($filepath, $summary);
+
 		App::uses('HttpSocket', 'Network/Http');
 		$HttpSocket = new HttpSocket();
 
@@ -32,14 +34,21 @@ class CSSCheckTask extends StyleCheckTask {
 			'warning' => 'no' // return only validation errors, not warnings
 		);
 
+		$start = microtime(true);
 		$response = $HttpSocket->get($validatorURL, http_build_query($cssValidatorOptions));
+		$secondsRan = microtime(true) - $start;
 		$bodyHTML = $response->body;
+		$CSSCodingStandardsPassed = (-1 !== strpos($bodyHTML, "Congratulations! No Error Found."));
 
 		if ($summary) {
-			return strpos($bodyHTML, "Congratulations! No Error Found.");
+			return $CSSCodingStandardsPassed && $parentOutput;
 		} else {
-			$output = $this->__cleanValidatorOutput($bodyHTML);
-			return "CSS formatting errors:\r\n$output\r\n";
+			if ($CSSCodingStandardsPassed) {
+				$return = "$parentOutput\r\n" . "CSS Coding Standards errors:\r\n" . $this->__cleanValidatorOutput($bodyHTML) . "\r\n";
+			} else {
+				$return = "$parentOutput [CSS Coding Standards checks passed (" . sprintf('%01.2f', $secondsRan) . "s)] \r\n";
+			}
+			return $return;
 		}
 	}
 
