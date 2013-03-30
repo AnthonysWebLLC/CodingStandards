@@ -162,9 +162,7 @@ class StyleCheckTask extends Shell {
 
 		$options = array_merge($files, array('All files'));
 
-		$option = $this->Options->select($options, 'Choose which file you want to validate:');
-
-		$filename = $options[$option];
+		$filename = $options[$this->Options->select($options, 'Choose which file you want to validate:')];
 
 		$filesToValidate = array();
 		if ($filename == 'All files') {
