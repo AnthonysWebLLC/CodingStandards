@@ -126,12 +126,12 @@ class StyleCheckTask extends Shell {
 		$this->Template->set(compact('reportDateTime', 'checkResults', 'secondsRan', 'additionalCheckResults'));
 
 		$HTMLreport = $this->Template->generate('code_style_checks', 'report');
-		$filepath = current(App::path('View')) . DS . 'Pages' . DS . 'code_style_check_report.ctp';
+		$filepath = $pluginPath . DS . 'tmp' . DS . 'reports' . DS . 'full' . DS . date('Y-m-d__H-i-s') . '.ctp';
 
 		$this->Template->createFile($filepath, $HTMLreport);
 
-		$reportURL = (Configure::read('CodingStandards.SERVER_NAME')?Configure::read('CodingStandards.SERVER_NAME'):'');
-		$reportURL .= '/pages/code_style_check_report';
+		$reportURL = (Configure::read('CodingStandards.SERVER_NAME')?'http://' . Configure::read('CodingStandards.SERVER_NAME'):'');
+		$reportURL .= '/coding_standards/reports/view/full/' . date('Y-m-d__H-i-s');
 		$this->out(__d('cake_console', "Open $reportURL in web browser to view report."));
 	}
 
