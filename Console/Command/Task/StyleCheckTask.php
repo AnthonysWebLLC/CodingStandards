@@ -147,11 +147,11 @@ class StyleCheckTask extends Shell {
 		$sniffs .= ',Squiz.WhiteSpace.SuperfluousWhitespace.EmptyLines';
 
 		if ($summary) {
-			exec("phpcs --extensions=php,ctp,js,css --standard=CakePHP --report=summary --sniffs=$sniffs $filepath", $result);
+			exec("phpcs --standard=CakePHP --report=summary --sniffs=$sniffs $filepath", $result);
 			return empty($result);
 		} else {
 			$start = microtime(true);
-			exec("phpcs --warning-severity=0  --extensions=php,ctp,js,css --standard=CakePHP --sniffs=$sniffs $filepath", $result);
+			exec("phpcs --warning-severity=0 --standard=CakePHP --sniffs=$sniffs $filepath", $result);
 			$secondsRan = microtime(true) - $start;
 			$result = implode("\r\n", $result);
 			if (strlen($result)) {

@@ -13,7 +13,7 @@ class PHPCheckTask extends StyleCheckTask {
 		$parentOutput = parent::run($filepath, $summary);
 
 		$start = microtime(true);
-		exec("phpcs --warning-severity=0 --extensions=ctp,php --standard=CakePHP $filepath", $result);
+		exec("phpcs --warning-severity=0 --standard=CakePHP $filepath", $result);
 		$result = $this->__stripLegacyCamelCaseErrors($result);
 		$secondsRan = microtime(true) - $start;
 		if ($summary) {
