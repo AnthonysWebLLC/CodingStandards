@@ -1,78 +1,14 @@
 #!/bin/bash
-echo "Checking staged changes against Coding Standards:";
+HOOK_PATH=`cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd`
+APP_PATH=$HOOK_PATH/../../app/
 
-DIR=`cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd`
-CURRENT_DIR=`pwd`
-APP_PATH=$DIR/../../app/
-
-ERRORS="false"
-
-style_check () {
-    FILEPATH=$CURRENT_DIR/$1
-    IGNORE=`cd $APP_PATH && Console/cake CodingStandards.check ignore_file_status $FILEPATH`
-
-    if [ "$IGNORE" == "false" ];
-	then
-		echo " $FILEPATH";
-    	STATUS=`cd $APP_PATH && Console/cake CodingStandards.check check_file $FILEPATH summary`
-	    if [ "$STATUS" == "false" ];
-    	then
-	        echo "$FILE contains errors!"
-        	ERRORS="true"
-    	    cd $APP_PATH && Console/cake CodingStandards.check check_file $FILEPATH full_report
-	    fi
-	fi
-}
-
-
-if git rev-parse --verify HEAD >/dev/null 2>&1; then
-    against=HEAD
-else
-    against=4b825dc642cb6eb9a060e54bf8d69288fbee4904
-fi
-
-# list all added and changed files
-CTP_FILES=`git diff --cached --name-status | grep \.ctp$ | awk '$1 != "D" { print $2 }'`
-PHP_FILES=`git diff --cached --name-status | grep \.php$ | awk '$1 != "D" { print $2 }'`
-JS_FILES=`git diff --cached --name-status | grep \.js$ | awk '$1 != "D" { print $2 }'`
-CSS_FILES=`git diff --cached --name-status | grep \.css$ | awk '$1 != "D" { print $2 }'`
-
-# Stash non-staged file changes to allow style_check to work directly with files
-cd $CURRENT_DIR
-CHANGES=`git diff --ignore-submodules --full-index --binary`
-if [ -n "$CHANGES" ];
-then
-	git diff --ignore-submodules --full-index --binary > /tmp/stash.$$
-	git stash -q --keep-index
-fi
-
-for FILE in $CTP_FILES ; do
-    style_check $FILE
+# Script path tricky for symlinks -- copied from http://stackoverflow.com/questions/59895/can-a-bash-script-tell-what-directory-its-stored-in
+SOURCE="${BASH_SOURCE[0]}"
+while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symlink
+	SCRIPT_PATH="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+	SOURCE="$(readlink "$SOURCE")"
+	[[ $SOURCE != /* ]] && SOURCE="$SCRIPT_PATH/$SOURCE" # if $SOURCE was a relative symlink, we need to resolve it relative to the path where the symlink file was located
 done
+SCRIPT_PATH="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
 
-for FILE in $PHP_FILES ; do
-    style_check $FILE
-done
-
-for FILE in $JS_FILES ; do
-    style_check $FILE
-done
-
-for FILE in $CSS_FILES ; do
-    style_check $FILE
-done
-
-# Unstash non-staged file changes
-cd $CURRENT_DIR
-if [ -n "$CHANGES" ];
-then
-	git apply --whitespace=nowarn < /tmp/stash.$$
-	git stash drop -q
-	rm /tmp/stash.$$
-fi
-
-if [ "$ERRORS" == "true" ];
-then
-    echo "Aborting commit - please clean your code to follow codding standard first."
-    exit 1
-fi
+$SCRIPT_PATH/check-staged-changes "$APP_PATH"
