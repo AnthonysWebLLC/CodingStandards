@@ -95,7 +95,7 @@ class StyleCheckTask extends Shell {
 				$output .= "No $check files found";
 			} else {
 				foreach ($files as $filepath) {
-					$output .= strip_tags($this->$checkClass->run($filepath));
+					$output .= $this->$checkClass->run($filepath);
 					echo '.';
 				}
 			}
@@ -112,7 +112,7 @@ class StyleCheckTask extends Shell {
 			$files = $this->AnyCheck->_getAllFiles();
 			echo ' Checking ' . count($files) . ' Additional file' . (count($files) > 1?'s':'') . ' in ' . $additionalPath;
 			foreach ($files as $filepath) {
-				$output .= strip_tags($this->AnyCheck->run($filepath));
+				$output .= $this->AnyCheck->run($filepath);
 				echo '.';
 			}
 			echo "\r\n";

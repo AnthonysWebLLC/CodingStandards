@@ -54,7 +54,7 @@ class CSSCheckTask extends StyleCheckTask {
 			$html = substr($html, 0, $successInformationStart);
 		}
 
-		return trim($html);
+		return strip_tags(trim($html));
 	}
 
 /**
