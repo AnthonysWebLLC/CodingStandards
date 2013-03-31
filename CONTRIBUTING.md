@@ -43,8 +43,3 @@ Then when you clone either use `git clone --recursive <...>` when copying your r
  1. `git add CodingStandards`
  1. `git commit -m "Updating CodingStandards submodule"`
  1. `git push`
-
-
-# To-do #
-
-1. Add link to good page explaining submodules
