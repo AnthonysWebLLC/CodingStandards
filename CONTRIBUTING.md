@@ -1,11 +1,11 @@
 [Jump back to README.md](README.md)
 
-Fork us and send a pull request
+Fork us and send a pull request.  The instructions 
 
 # Development Setup #
 
 1. Repositoriy setup (Add CodingStandards as a git submodule to an existing CakePHP project)
- 1. `git submodule add git@github.com:AnthonysWebLLC/CodingStandards.git ./app/Plugin/CodingStandards`
+ 1. `git submodule add git@github.com:AnthonysWebLLC/CodingStandards.git ./app/Plugin/CodingStandards`*
  1. `git commit -m "Adding CodingStandards Submodule"`
  1. Load Plugin in app/Config/bootstrap.php (See [README.md](README.md))
   1. Enable CodingStandards to check it's self
@@ -17,6 +17,8 @@ Fork us and send a pull request
  1. `cd app/Plugin/CodingStandards`
  1. `git checkout master`
  1. `git pull`
+
+*Replace git url with your own fork as needed
 
 # Editing #
 
