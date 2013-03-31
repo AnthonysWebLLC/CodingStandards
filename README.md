@@ -13,6 +13,7 @@ A full CakePHP Coding Standards stack centered around an easy to use shell inter
         CakePlugin::load('CodingStandards', array('bootstrap' => true));
         //Configure::write('CodingStandards.ADDITIONAL_PATHS', array('CodingStandards' => Configure::read('CodingStandards.PLUGIN_PATH'))); // Optional - Useful if you have extra paths you want included in full reports.  Example here is the coding standards themeselves, though you can other other(s).
         //Configure::write('CodingStandards.SERVER_NAME', '<Insert Accessible URL HERE>') // Optional and probably server specific -- enables CSS checking & provides full URL for HTML reports
+        //Also see See app/Plugin/CodingStandards/Config/bootstrap.php for other variables you can tweak
     }
 ````
 
@@ -25,11 +26,14 @@ You can also run an interactive coding standards shell any time via `Console/cak
 
 Or you can check an individual file with `Console/cake CodingStandards.check check_file [FILE] [(summary|full_report)]`
 
-# Why have Coding Standardsor changing ? #
-Amoung many, one of the most prevalent reasons for having Coding Standards is to help make code more easily readbale when you have multiple or changing project contributors.
+# Why have Coding Standards? #
 
-# Optional Configuration #
-1. See Config/bootstrap.php and override any variables you wish in your own bootstrap.php / core.php / ...
+* More readbale code by driving
+** Consistency with multiple developers
+** Consistency in a large codebase
+* Faster to implement with tools here
+** Full project based HTML report
+** Automated pre-commit hooks
 
 # The standards #
 * PHP -
