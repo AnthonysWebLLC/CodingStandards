@@ -14,7 +14,7 @@ A full CakePHP Coding Standards stack centered around an easy to use shell inter
  1. This will give you a full url where errors are output
  1. Will enable CSS style checking (We need to switch the API to uploads to make this not required)
 
-[Note: The install script is only tested on Fedora and likely has issues with non-yum based linux flavors]
+[Note: The install script is only tested on CentOS 6.3 and an old version of Fedora.  There are likely major issues with non-yum based linux flavors.
 
 # Use #
 After installing whenever you a attempt a commit the coding standards plugin will automatically check all changed code and present a warning message if anything doesn't follow the standards.  You can skip this check via `git commit -n`
