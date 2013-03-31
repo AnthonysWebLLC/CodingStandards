@@ -31,12 +31,19 @@ A full CakePHP Coding Standards stack centered around an easy to use shell inter
 
 | Type                                                    | Coding Standard                                      |
 |:------------------------------------------------------- |:---------------------------------------------------- |
+| General (Applied to all files)                          | [Basic Standards](#basic-standards)                  |
 | PHP (Models, Controllers, Console, Configuration, ...)  | [CakePHP Coding Standards](http://goo.gl/lWw9V)      |
 | CTP (Views, Layouts, Elements, ...)                     | [CakePHP Coding Standards](http://goo.gl/lWw9V)*     |                                       |
 | CSS                                                     | [W3C CSS Validation](http://goo.gl/g5Vrk)            |
 | JavaScript                                              | [jQuery JavaScript Style Guide](http://goo.gl/nFpZl) |
 
 *CakePHP's PHP standards are applied here, but they give a lot of what are probably false-positive errors.  Though they can be resolved, we probably need to work on / find a better matching Coding Standard for .ctp files
+
+## Basic Standards ##
+* Files MUST use only UTF-8 without BOM
+* Code MUST use an tab indent, and MUST NOT use spaces for indenting
+* All files MUST use the Unix LF (linefeed) line ending
+* There MUST NOT be trailing whitespace at the end of non-blank lines
 
 # Why Coding Standards? #
 
