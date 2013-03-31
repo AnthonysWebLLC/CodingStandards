@@ -9,8 +9,8 @@ A full CakePHP Coding Standards stack centered around an easy to use shell inter
         CakePlugin::load('CodingStandards', array('bootstrap' => true));
     }
 ````
-1. `cake CodingStandards.install` (Do on each server / installation)
-1. Optional: Add Configure::write('CodingStandards.SERVER_NAME', '<Insert Accessible URL HERE>')
+1. `Console/cake CodingStandards.install` (Do on each server / installation)
+1. Optional: Add `Configure::write('CodingStandards.SERVER_NAME', '<Insert Accessible URL HERE>')` to your `app/Config/bootstrap.php` within the if statement
  1. This will give you a full url where errors are output
  1. Will enable CSS style checking (We need to switch the API to uploads to make this not required)
 
