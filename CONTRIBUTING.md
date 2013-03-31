@@ -15,15 +15,15 @@ Fork >> Setup Development >> Edit >> Send GitHub pull request
  1. Usual `git clone` of your parent CakePHP project
  1. `git submodule update --init`
  1. `Console/cake CodingStandards.install`
-1. Development machine CodingStandards Submodule Update
- 1. `cd app/Plugin/CodingStandards`
- 1. `git checkout master`
- 1. `git pull`
 
 *Replace git url with your own fork as needed
 
 # Editing #
 
+1. Development machine CodingStandards Submodule Update
+ 1. `cd app/Plugin/CodingStandards`
+ 1. `git checkout master`
+ 1. `git pull`
 1. Make changes to Coding Standards
  1. `cd app/Plugin/CodingStandards`
  1. (Make changes)
