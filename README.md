@@ -1,5 +1,8 @@
 # About #
-This is a full CakePHP Coding Standards stack centered around an easy to use shell interface for report generation and git pre-commit hooks for automated testing.
+This is a full CakePHP Coding Standards stack centered around:
+
+* An easy to use shell interface for report generation
+* Git pre-commit hooks for automated testing
 
 # Requirments #
 * Functioning CakePHP 2 application*
