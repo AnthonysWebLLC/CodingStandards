@@ -1,6 +1,6 @@
 [Jump back to README.md](README.md)
 
-Fork us and send a pull request.  The instructions 
+Fork >> Setup Development >> Edit >> Send GitHub pull request
 
 # Development Setup #
 
