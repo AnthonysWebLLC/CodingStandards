@@ -65,4 +65,4 @@ A full CakePHP Coding Standards stack centered around an easy to use shell inter
 * ...
 
 # Contributing #
-We'd love you're help! See [CONTRIBUTING.md](CONTRIBUTING.md)
+We'd love your help! See [CONTRIBUTING.md](CONTRIBUTING.md)
