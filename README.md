@@ -20,21 +20,11 @@ A full CakePHP Coding Standards stack centered around an easy to use shell inter
 **Meant to be run on each server / installation.  The install script is only tested on CentOS 6.3 and an old version of Fedora.  There are likely major issues with non-yum based linux flavors.
 
 # Use #
-After installing whenever you a attempt a commit the coding standards plugin will automatically check all changed code and present a warning message if anything doesn't follow the standards.  You can skip this check via `git commit -n`
 
-You can also run an interactive coding standards shell any time via `Console/cake CodingStandards.check`
+1. Run `Console/cake CodingStandards.check` >> run a full HTML report >> clean up your code
+2. When running `git commit` all staged changes will be automatically* checked against the Coding Standards.  If an error is found the commits will be aborted and output errors.
 
-Or you can check an individual file with `Console/cake CodingStandards.check check_file [FILE] [(summary|full_report)]`
-
-# Why have Coding Standards? #
-
-* More readbale code by driving consistency
- * With multiple developers
- * In a large codebase
- * Across infrequent updates
-* Faster to implement via tools here
- * Full project based HTML report
- * Automated pre-commit hooks
+*You can skip this check via `git commit -n`
 
 # Chosen Standards #
 
@@ -45,19 +35,17 @@ Or you can check an individual file with `Console/cake CodingStandards.check che
 | CSS                                                     | [W3C CSS Validation](http://goo.gl/g5Vrk)            |
 | JavaScript                                              | [jQuery JavaScript Style Guide](http://goo.gl/nFpZl) |
 
-*CakePHP's PHP standards are applied here, but they give a lot of what are probably false-positive errors.  Though they can be resolved, we probably need to work on a better matching Coding Standard for .ctp files
+*CakePHP's PHP standards are applied here, but they give a lot of what are probably false-positive errors.  Though they can be resolved, we probably need to work on / find a better matching Coding Standard for .ctp files
 
-# The standards #
-* PHP -
-* JavaScript - jQuery's standards
-* ?CSS - W3C / Google Coding Standards?
-* ?HTML - W3C Validation / Google Coding Standards?
+# Why have Coding Standards? #
 
-# The tools #
-* PHP - PHPCS
-* JavaScript - JSHint
-* ?HTML - W3C Validation API?
-* ?CSS - W3C Validation API?
+* More readbale code by driving consistency
+ * With multiple developers
+ * In a large codebase
+ * Across infrequent updates
+* Faster to implement via tools here
+ * Full project based HTML report
+ * Automated pre-commit hooks
 
 # Contributing #
 We'd love you're help! See [CONTRIBUTING.md](CONTRIBUTING.md)
