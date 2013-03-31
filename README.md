@@ -47,6 +47,7 @@ A full CakePHP Coding Standards stack centered around an easy to use shell inter
 * Faster to implement via tools here
  * Full project based HTML report
  * Automated pre-commit hooks
+* ...
 
 # Contributing #
 We'd love you're help! See [CONTRIBUTING.md](CONTRIBUTING.md)
