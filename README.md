@@ -1,5 +1,5 @@
 # About #
-A full CakePHP Coding Standards stack centered around pre-commit automated testing
+A full CakePHP Coding Standards stack centered around an easy to use shell interface and git pre-commit hooks for automated testing
 
 # Installation - Repository #
 1. Copy this repository's files to `app/Plugin/CodingStandards`
