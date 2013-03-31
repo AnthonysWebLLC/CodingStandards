@@ -29,11 +29,11 @@ Or you can check an individual file with `Console/cake CodingStandards.check che
 # Why have Coding Standards? #
 
 * More readbale code by driving
-** Consistency with multiple developers
-** Consistency in a large codebase
+ * Consistency with multiple developers
+ * Consistency in a large codebase
 * Faster to implement with tools here
-** Full project based HTML report
-** Automated pre-commit hooks
+ * Full project based HTML report
+ * Automated pre-commit hooks
 
 # The standards #
 * PHP -
