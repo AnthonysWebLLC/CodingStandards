@@ -31,7 +31,7 @@ A full CakePHP Coding Standards stack centered around an easy to use shell inter
 
 | Type                                                    | Coding Standard                                      |
 |:------------------------------------------------------- |:---------------------------------------------------- |
-| General (Applied to all files)                          | [Formatting Basics](#basic-standards)                |
+| General (Applied to all files)                          | [Formatting Basics](#formatting-basics)              |
 | PHP (Models, Controllers, Console, Configuration, ...)  | [CakePHP Coding Standards](http://goo.gl/lWw9V)      |
 | CTP (Views, Layouts, Elements, ...)                     | [CakePHP Coding Standards](http://goo.gl/lWw9V)*     |                                       |
 | CSS                                                     | [W3C CSS Validation](http://goo.gl/g5Vrk)            |
