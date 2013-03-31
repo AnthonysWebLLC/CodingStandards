@@ -1,6 +1,14 @@
 # About #
 A full CakePHP Coding Standards stack centered around an easy to use shell interface and automated testing via git pre-commit hooks
 
+# Requirments #
+* Functioning CakePHP 2 application*
+* CentOS or similar yum based Linux flavor**
+
+*Tested with CakePHP 2.3.1
+
+**Our install script is only tested on CentOS 6.3 and an old version of Fedora.  There are likely major issues with non-yum based Linux flavors.  We intend to support other major Linux flavors in future releases as the community grows.
+
 # Install #
 1. Copy files to `app/Plugin/CodingStandards`
 1. Load Plugin in `app/Config/bootstrap.php`*
@@ -17,7 +25,7 @@ A full CakePHP Coding Standards stack centered around an easy to use shell inter
     }
 ````
 
-**Meant to be run on each server / installation.  The install script is only tested on CentOS 6.3 and an old version of Fedora.  There are likely major issues with non-yum based Linux flavors.
+**Meant to be run on each server / installation.
 
 # Use #
 
