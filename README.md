@@ -11,13 +11,13 @@ A full CakePHP Coding Standards stack centered around an easy to use shell inter
 ````php
     if (Configure::read('debug') > 0) {
         CakePlugin::load('CodingStandards', array('bootstrap' => true));
-        //Configure::write('CodingStandards.ADDITIONAL_PATHS', array('CodingStandards' => Configure::read('CodingStandards.PLUGIN_PATH'))); // Optional - Useful if you have extra paths you want included in full reports.  Example here is the coding standards themeselves, though you can other other(s).
+        //Configure::write('CodingStandards.ADDITIONAL_PATHS', array('CodingStandards' => Configure::read('CodingStandards.PLUGIN_PATH'))); // Optional - Useful if you have extra paths you want included in full reports.  Example here is the coding standards themselves, though you can other other(s).
         //Configure::write('CodingStandards.SERVER_NAME', '<Insert Accessible URL HERE>') // Optional and probably server specific -- enables CSS checking & provides full URL for HTML reports
         //Also see See app/Plugin/CodingStandards/Config/bootstrap.php for other variables you can tweak
     }
 ````
 
-**Meant to be run on each server / installation.  The install script is only tested on CentOS 6.3 and an old version of Fedora.  There are likely major issues with non-yum based linux flavors.
+**Meant to be run on each server / installation.  The install script is only tested on CentOS 6.3 and an old version of Fedora.  There are likely major issues with non-yum based Linux flavors.
 
 # Use #
 
@@ -47,7 +47,7 @@ A full CakePHP Coding Standards stack centered around an easy to use shell inter
 
 # Why Coding Standards? #
 
-* More readbale code by driving consistency
+* More readable code by driving consistency
  * With multiple developers
  * In a large codebase
  * Across infrequent updates
