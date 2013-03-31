@@ -28,18 +28,31 @@ Or you can check an individual file with `Console/cake CodingStandards.check che
 
 # Why have Coding Standards? #
 
-* More readbale code by driving
- * Consistency with multiple developers
- * Consistency in a large codebase
-* Faster to implement with tools here
+* More readbale code by driving consistency
+ * With multiple developers
+ * In a large codebase
+ * Across infrequent updates
+* Faster to implement via tools here
  * Full project based HTML report
  * Automated pre-commit hooks
+
+# Chosen Standards #
+
+| Type                            | Coding Standard                                  |
+|:------------------------------- |:------------------------------------------------ |
+| PHP (Models, Controllers, ...)  | [CakePHP Coding Standards](http://goo.gl/lWw9V)  |
+| CTP (Views)                     | [CakePHP Coding Standards](http://goo.gl/lWw9V)* |                                       |
+| CSS                             | [W3C CSS Validation](http://goo.gl/g5Vrk)        |
+| JavaScript                      |                                                  |
+| HTML                            | [Yet to be implemented]                          |
+
+*CakePHP's PHP standards are applied here, but they give a lot of what are probably false-positive errors.  Though they can be resolved, we probably need to work on a better matching Coding Standard for .ctp files
 
 # The standards #
 * PHP -
 * JavaScript - jQuery's standards
-* ?HTML - W3C Validation / Google Coding Standards?
 * ?CSS - W3C / Google Coding Standards?
+* ?HTML - W3C Validation / Google Coding Standards?
 
 # The tools #
 * PHP - PHPCS
