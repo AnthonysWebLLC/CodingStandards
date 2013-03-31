@@ -38,13 +38,12 @@ Or you can check an individual file with `Console/cake CodingStandards.check che
 
 # Chosen Standards #
 
-| Type                                                    | Coding Standard                                  |
-|:------------------------------------------------------- |:------------------------------------------------ |
-| PHP (Models, Controllers, Console, Configuration, ...)  | [CakePHP Coding Standards](http://goo.gl/lWw9V)  |
-| CTP (Views, Layouts, Elements, ...)                     | [CakePHP Coding Standards](http://goo.gl/lWw9V)* |                                       |
-| CSS                                                     | [W3C CSS Validation](http://goo.gl/g5Vrk)        |
-| JavaScript                                              |                                                  |
-| HTML                                                    | [Yet to be implemented]                          |
+| Type                                                    | Coding Standard                                      |
+|:------------------------------------------------------- |:---------------------------------------------------- |
+| PHP (Models, Controllers, Console, Configuration, ...)  | [CakePHP Coding Standards](http://goo.gl/lWw9V)      |
+| CTP (Views, Layouts, Elements, ...)                     | [CakePHP Coding Standards](http://goo.gl/lWw9V)*     |                                       |
+| CSS                                                     | [W3C CSS Validation](http://goo.gl/g5Vrk)            |
+| JavaScript                                              | [jQuery JavaScript Style Guide](http://goo.gl/nFpZl) |
 
 *CakePHP's PHP standards are applied here, but they give a lot of what are probably false-positive errors.  Though they can be resolved, we probably need to work on a better matching Coding Standard for .ctp files
 
