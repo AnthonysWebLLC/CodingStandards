@@ -38,7 +38,7 @@ A full CakePHP Coding Standards stack centered around an easy to use shell inter
 
 *CakePHP's PHP standards are applied here, but they give a lot of what are probably false-positive errors.  Though they can be resolved, we probably need to work on / find a better matching Coding Standard for .ctp files
 
-# Why have Coding Standards? #
+# Why Coding Standards? #
 
 * More readbale code by driving consistency
  * With multiple developers
