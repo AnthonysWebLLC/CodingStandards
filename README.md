@@ -2,12 +2,11 @@
 A full CakePHP Coding Standards stack centered around an easy to use shell interface and git pre-commit hooks for automated testing
 
 # Installation - Repository #
-1. Copy this repository's files to `app/Plugin/CodingStandards`
-1. Load plug in your `app/Config/bootstrap.php`*
-1. `Console/cake CodingStandards.install`** (Do on each server / installation)
+1. Copy files to `app/Plugin/CodingStandards`
+1. Load Plugin in `app/Config/bootstrap.php`*
+1. Install via `Console/cake CodingStandards.install`** (Do on each server / installation)
 
-
-*Add this code
+*Code to add
 
 ````php
     if (Configure::read('debug') > 0) {
