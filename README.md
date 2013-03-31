@@ -26,7 +26,7 @@ A full CakePHP Coding Standards stack centered around an easy to use shell inter
 
 *You can skip this check via `git commit -n`
 
-# Chosen Standards #
+# Standards #
 
 | Type                                                    | Coding Standard                                      |
 |:------------------------------------------------------- |:---------------------------------------------------- |
