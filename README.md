@@ -4,7 +4,7 @@ A full CakePHP Coding Standards stack centered around an easy to use shell inter
 # Install #
 1. Copy files to `app/Plugin/CodingStandards`
 1. Load Plugin in `app/Config/bootstrap.php`*
-1. Install via `Console/cake CodingStandards.install`** (Do on each server / installation)
+1. Install via `Console/cake CodingStandards.install`**
 
 *Code to add
 
@@ -16,7 +16,7 @@ A full CakePHP Coding Standards stack centered around an easy to use shell inter
     }
 ````
 
-**The install script is only tested on CentOS 6.3 and an old version of Fedora.  There are likely major issues with non-yum based linux flavors
+**Meant to be run on each server / installation.  The install script is only tested on CentOS 6.3 and an old version of Fedora.  There are likely major issues with non-yum based linux flavors.
 
 # Use #
 After installing whenever you a attempt a commit the coding standards plugin will automatically check all changed code and present a warning message if anything doesn't follow the standards.  You can skip this check via `git commit -n`
