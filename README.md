@@ -21,8 +21,9 @@ A full CakePHP Coding Standards stack centered around an easy to use shell inter
 
 # Use #
 
-1. Run `Console/cake CodingStandards.check` >> run a full HTML report >> clean up your code
-2. When running `git commit` all staged changes will be automatically* checked against the Coding Standards.  If an error is found the commits will be aborted and output errors.
+1. Run `Console/cake CodingStandards.check` >> run a full HTML report >> clean up all code
+1. Run `Console/cake CodingStandards.check` >> run reports on specific file(s) you're concerned about >> clean up specific code
+1. Run `git commit` >> (automatic check run) >> (errors will descriptively abort commit, otherwise done) >> fix >> Run `git commit` ...
 
 *You can skip this check via `git commit -n`
 
