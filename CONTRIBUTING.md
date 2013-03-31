@@ -17,13 +17,8 @@ Fork us and send a pull request
  1. `cd app/Plugin/CodingStandards`
  1. `git checkout master`
  1. `git pull`
-1. Repository parent project update
- 1. `cd ..`
- 1. `git add CodingStandards`
- 1. `git commit -m "Updating CodingStandards submodule"`
- 1. `git push`
 
-## Makeing edits ##
+# Editing #
 
 1. Make changes to Coding Standards
  1. `cd app/Plugin/CodingStandards`
