@@ -32,3 +32,4 @@
 1. Code cleanup
  1. Move logic of /Vendors/check-staged-changes into PHP Plugin code, minimizing BASH script logic
   1. Along the way / after also cleanup logic to only check files that would be found in full-report, utilizing all configured rules?
+1. Add link in CONTRIBUTING to good page explaining submodules
