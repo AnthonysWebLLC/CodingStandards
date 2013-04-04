@@ -77,10 +77,11 @@ class StyleCheckTask extends Shell {
 				$output .= "No $check files found";
 			} else {
 				foreach ($files as $filepath) {
-					$output .= $this->$checkClass->run($filepath);
+					$output .= $this->$checkClass->run($filepath) . "\r\n";
 					echo '.';
 				}
 			}
+			trim($output);
 			echo "\r\n";
 			$secondsRanCheckGroup = microtime(true) - $startCheckGroup;
 			$checkResults[$check] = array('output' => $output, 'secondsRan' => $secondsRanCheckGroup);
@@ -94,9 +95,10 @@ class StyleCheckTask extends Shell {
 			$files = $this->AnyCheck->_getAllFiles();
 			echo ' Checking ' . count($files) . ' Additional file' . (count($files) > 1?'s':'') . ' in ' . $additionalPath;
 			foreach ($files as $filepath) {
-				$output .= $this->AnyCheck->run($filepath);
+				$output .= $this->AnyCheck->run($filepath) . "\r\n";
 				echo '.';
 			}
+			trim($output);
 			echo "\r\n";
 			$secondsRanCheckGroup = microtime(true) - $startCheckGroup;
 			$checkResults["Additional::$additionalPath"] = array('output' => $output, 'secondsRan' => $secondsRanCheckGroup);
@@ -110,11 +112,11 @@ class StyleCheckTask extends Shell {
 		$HTMLreport = $this->Template->generate('code_style_checks', 'report');
 		$filepath = $pluginPath . DS . 'tmp' . DS . 'reports' . DS . 'full' . DS . date('Y-m-d__H-i-s') . '.ctp';
 
-		$this->Template->createFile($filepath, $HTMLreport);
+		file_put_contents($filepath, $HTMLreport);
 
 		$reportURL = (Configure::read('CodingStandards.SERVER_NAME')?'http://' . Configure::read('CodingStandards.SERVER_NAME'):'');
 		$reportURL .= '/coding_standards/reports/view/full/' . date('Y-m-d__H-i-s');
-		$this->out(__d('cake_console', "Open $reportURL in web browser to view report."));
+		$this->out(__d('cake_console', "\r\nOpen $reportURL in a web browser to view the report."));
 	}
 
 	public function run($filepath, $summary = false) {
@@ -143,16 +145,16 @@ class StyleCheckTask extends Shell {
 					$filepath = '...' . substr($filepath, -37);
 				}
 				$filepath = sprintf("%40s", $filepath);
-				$result = "[File: $filepath] [Base file formatting checks passed (" . sprintf('%01.2f', $secondsRan) . "s)]";
+				$result = "$filepath [Base file formatting checks passed (" . sprintf('%01.2f', $secondsRan) . "s)]";
 			}
 			return $result;
 		}
 	}
 
 	protected function _interactive() {
-		$this->hr();
-		$this->out(__d('cake_console', "Validate file\nPath: %s", $this->_path));
-		$this->hr();
+		$this->Options->menuHeader('File choice');
+		$this->out(__d('cake_console', "%s files under %s", '.' . implode(', .', $this->_exts), $this->_path));
+		echo "\r\n";
 
 		$files = $this->_getAllFiles();
 		if (empty($files)) {
@@ -162,7 +164,7 @@ class StyleCheckTask extends Shell {
 
 		$options = array_merge($files, array('All files'));
 
-		$filename = $options[$this->Options->select($options, 'Choose which file you want to validate:')];
+		$filename = $options[$this->Options->select($options, 'Choose which file to validate:')];
 
 		$filesToValidate = array();
 		if ($filename == 'All files') {
@@ -177,9 +179,10 @@ class StyleCheckTask extends Shell {
 
 		echo 'Checking ' . count($filesToValidate) . ' file' . (count($filesToValidate) > 1?'s':'');
 		foreach ($filesToValidate as $url) {
-			$output .= $this->run($url);
+			$output .= $this->run($url) . "\r\n";
 			echo '.';
 		}
+		$output = trim($output);
 		echo "\r\n";
 
 		$this->out($output);

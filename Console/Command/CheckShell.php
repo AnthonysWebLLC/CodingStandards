@@ -18,9 +18,15 @@ class CheckShell extends AppShell {
 	);
 
 	public function main() {
-		$options = array('M', 'V', 'C', 'J', 'S', 'G', 'E', 'F', 'Q');
+		$this->out($this->nl(1));
 		$this->out(__d('cake_console', 'Coding Standards Check Shell'));
-		$this->hr();
+		$this->stdout->styles('menu', array('text' => 'blue', 'bold' => true));
+		$this->mainloop();
+	}
+
+	public function mainloop() {
+		$options = array('M', 'V', 'C', 'J', 'S', 'G', 'E', 'F', 'Q');
+		$this->Options->menuHeader('Main menu', 2);
 		$this->out(__d('cake_console', '[M]odels'));
 		$this->out(__d('cake_console', '[V]iews'));
 		$this->out(__d('cake_console', '[C]ontrollers'));
@@ -70,8 +76,9 @@ class CheckShell extends AppShell {
 				} else {
 					$options = array();
 					$ii = 0;
+					$this->Options->menuHeader('Path choice', 3);
 					$this->out(__d('cake_console', 'Additional Paths:'));
-					$this->hr();
+					$this->out();
 					foreach ($additionalPaths as $additionalPath) {
 						$option = $additionalPath;
 						$options[$ii++] = $option;
@@ -90,8 +97,8 @@ class CheckShell extends AppShell {
 			default:
 				$this->out(__d('cake_console', 'You have made an invalid selection. Please choose a type of class to validate by entering M, V, C, J, S or F.'));
 		}
-		$this->hr();
-		$this->main();
+		$this->out($this->nl(1));
+		$this->mainloop();
 	}
 
 	public function ignore_file_status() {

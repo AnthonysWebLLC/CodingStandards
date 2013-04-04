@@ -28,6 +28,6 @@ class JSCheckTask extends StyleCheckTask {
 			$output = implode("\r\n", $result);
 		}
 
-		return "$parentOutput\r\nJavaScript formatting errors:\r\n$output\r\n";
+		return "$parentOutput\r\nJavaScript formatting errors:\r\n$output";
 	}
 }

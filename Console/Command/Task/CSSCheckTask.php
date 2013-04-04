@@ -24,7 +24,7 @@ class CSSCheckTask extends StyleCheckTask {
 		try {
 			$cssFileURL = $this->toURL($filepath);
 		} catch (Exception $e) {
-			return $e->getMessage() . "\r\n";
+			return $e->getMessage();
 		}
 
 		$cssValidatorOptions = array(
@@ -44,9 +44,9 @@ class CSSCheckTask extends StyleCheckTask {
 			return $CSSCodingStandardsPassed && $parentOutput;
 		} else {
 			if ($CSSCodingStandardsPassed) {
-				$return = "$parentOutput\r\n" . "CSS Coding Standards errors:\r\n" . $this->__cleanValidatorOutput($bodyHTML) . "\r\n";
+				$return = "$parentOutput\r\nCSS Coding Standards errors:\r\n" . $this->__cleanValidatorOutput($bodyHTML);
 			} else {
-				$return = "$parentOutput [CSS Coding Standards checks passed (" . sprintf('%01.2f', $secondsRan) . "s)] \r\n";
+				$return = "$parentOutput [CSS Coding Standards checks passed (" . sprintf('%01.2f', $secondsRan) . "s)]";
 			}
 			return $return;
 		}
