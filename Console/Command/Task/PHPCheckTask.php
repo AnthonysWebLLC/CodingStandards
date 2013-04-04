@@ -21,9 +21,9 @@ class PHPCheckTask extends StyleCheckTask {
 		} else {
 			$output = implode("\r\n", $result);
 			if (strlen($output)) {
-				$return = "$parentOutput\r\nPHP Coding Standards errors:\r\n$output";
+				$return = "$parentOutput\r\nPHP Coding Standards errors:\r\n<failure>$output</failure>";
 			} else {
-				$return = "$parentOutput [PHP Coding Standards checks passed (" . sprintf('%01.2f', $secondsRan) . "s)]";
+				$return = "$parentOutput <success>[PHP Coding Standards checks passed (" . sprintf('%01.2f', $secondsRan) . "s)]</success>";
 			}
 			return $return;
 		}

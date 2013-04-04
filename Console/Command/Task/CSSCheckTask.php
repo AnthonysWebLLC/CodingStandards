@@ -44,9 +44,9 @@ class CSSCheckTask extends StyleCheckTask {
 			return $CSSCodingStandardsPassed && $parentOutput;
 		} else {
 			if ($CSSCodingStandardsPassed) {
-				$return = "$parentOutput\r\nCSS Coding Standards errors:\r\n" . $this->__cleanValidatorOutput($bodyHTML);
+				$return = "$parentOutput\r\nCSS Coding Standards errors:\r\n<failure>" . $this->__cleanValidatorOutput($bodyHTML) . '</failure>';
 			} else {
-				$return = "$parentOutput [CSS Coding Standards checks passed (" . sprintf('%01.2f', $secondsRan) . "s)]";
+				$return = "$parentOutput <success>[CSS Coding Standards checks passed (" . sprintf('%01.2f', $secondsRan) . "s)]</success>";
 			}
 			return $return;
 		}

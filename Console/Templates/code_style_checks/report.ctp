@@ -1,3 +1,12 @@
+<style type="text/css">
+	success {
+		color: green;
+	}
+	failure {
+		color: red;
+	}
+</style>
+
 <h2>
 	Coding Standards Full Report
 	[Generated <?php echo $reportDateTime; ?>]

@@ -20,6 +20,8 @@ class CheckShell extends AppShell {
 	public function main() {
 		$this->out($this->nl(1));
 		$this->out(__d('cake_console', 'Coding Standards Check Shell'));
+		$this->stdout->styles('success', array('text' => 'green'));
+		$this->stdout->styles('failure', array('text' => 'red'));
 		$this->mainloop();
 	}
 

@@ -20,14 +20,19 @@ class JSCheckTask extends StyleCheckTask {
 		$pluginPath = Configure::read('CodingStandards.PLUGIN_PATH');
 		$jscheckPath = $pluginPath . DS . 'Vendor' . DS . 'jshint';
 
+		$start = microtime(true);
+		exec($jscheckPath . DS . "jscheck.sh $filepath", $result);
+		$secondsRan = microtime(true) - $start;
+
 		if ($summary) {
-			exec($jscheckPath . DS . "jscheck.sh $filepath", $result);
 			return empty($result) && $parentOutput;
 		} else {
-			exec($jscheckPath . DS . "jscheck.sh $filepath", $result);
 			$output = implode("\r\n", $result);
+			if ($output) {
+				return "$parentOutput\r\nJavaScript formatting errors:\r\n<failure>$output</failure>";
+			} else {
+				return "$parentOutput <success>[JS Coding Standards checks passed (" . sprintf('%01.2f', $secondsRan) . "s)]</success>";
+			}
 		}
-
-		return "$parentOutput\r\nJavaScript formatting errors:\r\n$output";
 	}
 }

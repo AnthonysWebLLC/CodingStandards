@@ -139,13 +139,13 @@ class StyleCheckTask extends Shell {
 			$secondsRan = microtime(true) - $start;
 			$result = implode("\r\n", $result);
 			if (strlen($result)) {
-				$result = "File formatting errors:\r\n$result\r\n";
+				$result = "File formatting errors:\r\n<failure>$result</failure>\r\n";
 			} else {
 				if (strlen($filepath) > 40) {
 					$filepath = '...' . substr($filepath, -37);
 				}
 				$filepath = sprintf("%40s", $filepath);
-				$result = "$filepath [Base file formatting checks passed (" . sprintf('%01.2f', $secondsRan) . "s)]";
+				$result = "$filepath <success>[Base file formatting checks passed (" . sprintf('%01.2f', $secondsRan) . "s)]</success>";
 			}
 			return $result;
 		}
