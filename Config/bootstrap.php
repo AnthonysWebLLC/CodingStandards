@@ -29,10 +29,11 @@ Configure::write('CodingStandards.ADDITIONAL_PATHS', array(
 
 /**
  * Filepath patterns to ignore in checks
- * * Ignores those added @ CodingStandards.ADDITIONAL_PATHS
+ * * Also ignores those added @ CodingStandards.ADDITIONAL_PATHS
  */
 Configure::write('CodingStandards.PATH_IGNORE_PATTERNS', array(
 	'/.*' . WEBROOT_DIR . '\\' . DS . 'js' . '\\' . DS . '.*\\.min\\.js$/i',	// Minified JavaScript wouldn't match Coding Standards
 	'/.*empty$/',																// Don't check git folder placeholders
-	'/.*\\/vendor\\/.*/i'														// Don't check vendor folders
+	'/.*\\/vendor\\/.*/i',														// Don't check vendor folders
+	'/.*\\/tmp\\/.*/'															// Don't check temp files
 ));
