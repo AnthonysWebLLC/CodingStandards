@@ -15,9 +15,10 @@ class PHPCheckTask extends StyleCheckTask {
 		$start = microtime(true);
 		exec("phpcs --warning-severity=0 --standard=CakePHP $filepath", $result);
 		$result = $this->__stripLegacyCamelCaseErrors($result);
+		$result = $this->_stripRunTiming($result);
 		$secondsRan = microtime(true) - $start;
 		if ($summary) {
-			return empty($result) && $parentOutput;
+			return (0 === strlen(implode('', $result))) && $parentOutput;
 		} else {
 			$output = implode("\r\n", $result);
 			if (strlen($output)) {

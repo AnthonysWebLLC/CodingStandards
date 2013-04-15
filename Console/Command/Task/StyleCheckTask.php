@@ -132,10 +132,12 @@ class StyleCheckTask extends Shell {
 
 		if ($summary) {
 			exec("phpcs --standard=CakePHP --report=summary --sniffs=$sniffs $filepath", $result);
-			return empty($result);
+			$result = $this->_stripRunTiming($result);
+			return (0 === strlen(implode('', $result)));
 		} else {
 			$start = microtime(true);
 			exec("phpcs --warning-severity=0 --standard=CakePHP --sniffs=$sniffs $filepath", $result);
+			$result = $this->_stripRunTiming($result);
 			$secondsRan = microtime(true) - $start;
 			$result = implode("\r\n", $result);
 			if (strlen($result)) {
@@ -186,5 +188,15 @@ class StyleCheckTask extends Shell {
 		echo "\r\n";
 
 		$this->out($output);
+	}
+
+	protected function _stripRunTiming($resultLines) {
+		foreach ($resultLines as $lineNumber => $resultLine) {
+			$pattern = '/^Time: .*, Memory: .*$/';
+			if (1 === preg_match($pattern, $resultLine)) {
+				unset($resultLines[$lineNumber]);
+			}
+		}
+		return $resultLines;
 	}
 }
