@@ -19,9 +19,10 @@ class JSCheckTask extends StyleCheckTask {
 
 		$pluginPath = Configure::read('CodingStandards.PLUGIN_PATH');
 		$jscheckPath = $pluginPath . DS . 'Vendor' . DS . 'jshint';
+		$jsHintGlobals = Configure::read('CodingStandards.JSHINT_GLOBALS');
 
 		$start = microtime(true);
-		exec($jscheckPath . DS . "jscheck.sh $filepath", $result);
+		exec($jscheckPath . DS . "jscheck.sh $filepath $jsHintGlobals", $result);
 		$secondsRan = microtime(true) - $start;
 
 		if ($summary) {
