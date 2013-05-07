@@ -1,7 +1,7 @@
 #!/bin/bash
 
 BASEDIR=$(dirname $0)
-GLOBALS="$,Handlebars,tinyMCE"
+GLOBALS="$"
 
 if [ $# -eq 0 ]
 then
