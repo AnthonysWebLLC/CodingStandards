@@ -41,4 +41,4 @@ Configure::write('CodingStandards.PATH_IGNORE_PATTERNS', array(
 /**
  * Telling JSHint about global variables that are defined elsewhere.
  */
-Configure::write('CodingStandards.JSHINT_GLOBALS', "$,Handlebars,tinyMCE,alertify,YT,SC");
+Configure::write('CodingStandards.JSHINT_GLOBALS', "$");
