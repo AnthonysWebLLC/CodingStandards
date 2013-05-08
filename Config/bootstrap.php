@@ -37,3 +37,8 @@ Configure::write('CodingStandards.PATH_IGNORE_PATTERNS', array(
 	'/.*\\/vendor\\/.*/i',														// Don't check vendor folders
 	'/.*\\/tmp\\/.*/'															// Don't check temp files
 ));
+
+/**
+ * Telling JSHint about global variables that are defined elsewhere.
+ */
+Configure::write('CodingStandards.JSHINT_GLOBALS', "$");
