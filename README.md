@@ -69,3 +69,4 @@ This is a full CakePHP Coding Standards stack centered around:
 
 # Contributing #
 We'd love your help! See [CONTRIBUTING.md](CONTRIBUTING.md)
+
