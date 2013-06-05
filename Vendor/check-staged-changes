@@ -47,7 +47,8 @@ then
 fi
 
 for FILE in $CTP_FILES ; do
-    style_check $FILE
+	# Hacking out ctp inclusion as the coding standards there aren't really ready; It's just doing php checking which isn't good for views -- Anthony June 4th 2013
+    # style_check $FILE
 done
 
 for FILE in $PHP_FILES ; do
