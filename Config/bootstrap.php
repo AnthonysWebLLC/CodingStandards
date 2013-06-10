@@ -35,7 +35,8 @@ Configure::write('CodingStandards.PATH_IGNORE_PATTERNS', array(
 	'/.*' . '\\' . DS . 'js' . '\\' . DS . '.*\\.min\\.js$/i',					// Minified JavaScript wouldn't match Coding Standards
 	'/.*empty$/',																// Don't check git folder placeholders
 	'/.*\\/vendor\\/.*/i',														// Don't check vendor folders
-	'/.*\\/tmp\\/.*/'															// Don't check temp files
+	'/.*\\/tmp\\/.*/',															// Don't check temp files
+	'/.*app\\' . DS . 'Config\\' . DS . 'Schema\\' . DS . 'i18n.php/'					// Don't check i18n.php as CakePHP core didn't make to CS
 ));
 
 /**
