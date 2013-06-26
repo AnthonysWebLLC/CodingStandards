@@ -13,7 +13,8 @@
 	(<?php echo sprintf('%01.2f', $secondsRan); ?>s)
 </h2>
 
-<?php foreach ($checkResults as $checkName => $checkResult) { ?>
+<?php
+foreach ($checkResults as $checkName => $checkResult) { ?>
 	<br />
 	<h3>
 		<?php echo $checkName; ?>

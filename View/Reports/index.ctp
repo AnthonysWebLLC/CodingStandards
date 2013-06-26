@@ -14,7 +14,8 @@
 				Datetime
 			</th>
 		</tr>
-<?php foreach ($reports as $report) { ?>
+<?php
+foreach ($reports as $report) { ?>
 			<tr>
 				<?php
 					/*
