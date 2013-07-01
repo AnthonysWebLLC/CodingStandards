@@ -21,4 +21,4 @@ fi
 
 filepath=$1
 
-rhino $BASEDIR/jshint-rhino.js $filepath curly=true,expr=true,newcap=false,quotmark=double,regexdash=true,trailing=true,undef=true,unused=true,maxerr=100,eqnull=true,evil=true,sub=true,browser=true,wsh=true,predef={define,jQuery} $GLOBALS
+rhino $BASEDIR/jshint-rhino.js $filepath curly=true,expr=true,newcap=false,quotmark=double,regexdash=true,trailing=true,undef=true,unused=true,scripturl=true,maxerr=100,eqnull=true,evil=true,sub=true,browser=true,wsh=true,predef={define,jQuery} $GLOBALS
