@@ -38,15 +38,15 @@ class CSSCheckTask extends StyleCheckTask {
 		$response = $HttpSocket->get($validatorURL, http_build_query($cssValidatorOptions));
 		$secondsRan = microtime(true) - $start;
 		$bodyHTML = $response->body;
-		$CSSCodingStandardsPassed = (-1 !== strpos($bodyHTML, "Congratulations! No Error Found."));
+		$CSSCodingStandardsPassed = strpos($bodyHTML, "Congratulations! No Error Found.");
 
 		if ($summary) {
 			return $CSSCodingStandardsPassed && $parentOutput;
 		} else {
 			if ($CSSCodingStandardsPassed) {
-				$return = "$parentOutput\r\nCSS Coding Standards errors:\r\n<failure>" . $this->__cleanValidatorOutput($bodyHTML) . '</failure>';
-			} else {
 				$return = "$parentOutput <success>[CSS Coding Standards checks passed (" . sprintf('%01.2f', $secondsRan) . "s)]</success>";
+			} else {
+				$return = "$parentOutput\r\nCSS Coding Standards errors:\r\n<failure>" . $this->__cleanValidatorOutput($bodyHTML) . '</failure>';
 			}
 			return $return;
 		}
