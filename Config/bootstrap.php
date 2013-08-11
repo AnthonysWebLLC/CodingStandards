@@ -38,7 +38,8 @@ Configure::write('CodingStandards.PATH_IGNORE_PATTERNS', array(
 	'/.*\\/vendors\\/.*/i',														// Don't check vendors folders
 	'/.*\\/tmp\\/.*/',															// Don't check temp files
 	'/.*app\\' . DS . 'Config\\' . DS . 'Schema\\' . DS . 'i18n.php/',			// Don't check i18n.php as CakePHP core didn't make to CS
-	'/.*css' . '\\' . DS . 'cake.generic.css/'									// Don't check CakePHP default CSS, it's a fail
+	'/.*css' . '\\' . DS . 'cake.generic.css/',									// Don't check CakePHP default CSS, it's a fail
+	'/.*app\\' . DS . 'Plugin\\' . DS . 'DebugKit\\' . DS . '.*/'				// Don't check DebugKit plugin, it's an external plugin
 ));
 
 /**
