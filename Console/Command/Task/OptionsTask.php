@@ -2,7 +2,7 @@
 
 class OptionsTask extends Shell {
 
-	public function menuHeader($header, $depth=4) {
+	public function menuHeader($header, $depth = 4) {
 		$this->out(str_repeat('-', $depth) . " $header " . str_repeat('-', 63 - strlen($header) - 2 - $depth));
 	}
 
